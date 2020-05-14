@@ -1,0 +1,32 @@
+build.version: @project.version@
+brickName: @brick.name@
+
+spring:
+  application:
+    name: @project.name@
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-server
+      failFast: true
+      label: develop
+  sleuth:
+    baggage-keys:
+      - solutionId
+      - processId
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${REPLICASET:http://localhost:10103/eureka/}
+
+logging:
+  level:
+    ROOT: INFO
+    com.netflix.discovery.shared.resolver.aws: WARN
+    org.zalando.logbook.Logbook: TRACE
+  pattern:
+    console: "${brickName}_${spring.application.name} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%X{processId},%X{solutionId},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}]){blue}[%thread] %clr(%-5level) %clr(%logger{36}){magenta} - %msg%n"

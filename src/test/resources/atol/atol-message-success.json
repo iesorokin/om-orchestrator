@@ -1,0 +1,11 @@
+{
+  "atolId": "5c812ed29c66f35c633a3a7f",
+  "correlationKey": "correlationKey",
+  "status": "DONE",
+  "fiscalData": {
+    "uuid": "atol-uuid",
+    "ecrRegistrationNumber": "ecrRegistrationNumber",
+    "fiscalDocumentNumber": "31926072",
+    "fiscalStorageNumber": "fiscalStorageNumber"
+  }
+}

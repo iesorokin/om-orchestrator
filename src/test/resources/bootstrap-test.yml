@@ -1,0 +1,70 @@
+build.version: test
+spring:
+  cloud:
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+  zipkin:
+    enabled: false
+eureka:
+  client:
+    enabled: false
+
+orchestrator:
+  consumer:
+    maxRetry: 10
+    maxRetryPerDay: 288
+
+payment:
+  task:
+    urlPatch: 'http://tasks/v1/{taskId}'
+    urlGetPaymentTask: 'http://tasks/v1/{taskId}'
+    urlStatusPut: 'http://tasks/v1/task/chanage-status/{taskId}'
+    urlPathLine: 'http://tasks/v1/task/{taskId}/line'
+    urlPostGiveAway: 'http://tasks/v1/task/{paymentTaskId}/give-away'
+    urlGetGiveAways: 'http://tasks/v1/task/{paymentTaskId}/give-away'
+  atol:
+    urlRegisterSale: 'http://atol/register-sale'
+    urlRegisterRefund: 'http://atol/register-refund'
+    urlRegisterGiveAway: 'http://atol/register-giveaway'
+  sberbank:
+    urlTransactionRefund: 'http://sberbank/transaction-refund/{orderId}'
+
+solution:
+  urlSolutionById: 'http://solution/v1/{solutionId}'
+internalSystem:
+  default:
+    readTimeout: 35000
+    connectTimeout: 5000
+    maxConnPerRoute: 50
+    maxConnTotal: 100
+
+externalSystem:
+  default:
+    readTimeout: 30000
+    connectTimeout: 10000
+    maxConnPerRoute: 50
+    maxConnTotal: 100
+
+sms:
+  urlSendMultiSms: urlSendMultiSms
+  sendSms: true
+
+cash:
+  availabilityUrl: "http://cash/availability?storeId={storeId}&deliveryMode={deliveryMode}"
+  availability-parameters:
+    byDeliveryMode:
+      HOME_DELIVERY:
+        customerAuth:
+        - true
+        customerType:
+        - "PERSON"
+        customerReliability: 0
+        maximumAmount: 10000
+sberbank:
+  availabilityUrl: "http://sberbank/availability?storeId={storeId}&deliveryMode={deliveryMode}"
+
+taskExecutor:
+  corePoolSize: 5
+  maxPoolSize: 20

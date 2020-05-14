@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_03gz6dl" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.1">
+  <bpmn:process id="give_away" name="give_away" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0vhf40k</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0vhf40k" sourceRef="StartEvent_1" targetRef="ExclusiveGateway_1qdt6cw" />
+    <bpmn:sequenceFlow id="SequenceFlow_0eb40gy" sourceRef="registerAtolGiveAwayTask" targetRef="receiveAtolGiveAwayRegisterSuccessTask" />
+    <bpmn:receiveTask id="receiveAtolGiveAwayRegisterSuccessTask" name="Receive ATOL give-away register success" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_1bm3yo6">
+      <bpmn:incoming>SequenceFlow_0eb40gy</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1smhy09</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="Task_1x99vwq" name="Receive TPNET giveaway success" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_0z4mrgc">
+      <bpmn:incoming>SequenceFlow_0vk2aen</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_00zpcus</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0vk2aen" sourceRef="tpNetGiveAwayTask" targetRef="Task_1x99vwq" />
+    <bpmn:endEvent id="EndEvent_0er95dj">
+      <bpmn:incoming>SequenceFlow_1x4alky</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:boundaryEvent id="BoundaryEvent_06rbtly" name="Failed" camunda:asyncAfter="true" camunda:exclusive="false" attachedToRef="Task_1x99vwq">
+      <bpmn:outgoing>SequenceFlow_104657u</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_03vphce" />
+    </bpmn:boundaryEvent>
+    <bpmn:userTask id="Task_1jnm4ph" name="Solve issue with TPNET giveaway">
+      <bpmn:incoming>SequenceFlow_104657u</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1233n9p</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_104657u" sourceRef="BoundaryEvent_06rbtly" targetRef="Task_1jnm4ph" />
+    <bpmn:sequenceFlow id="SequenceFlow_1233n9p" sourceRef="Task_1jnm4ph" targetRef="tpNetGiveAwayTask" />
+    <bpmn:sendTask id="tpNetGiveAwayTask" name="Process TPNET giveaway" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${processTpNetGiveAwayTask}">
+      <bpmn:extensionElements>
+        <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1233n9p</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1v1mzw1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0vk2aen</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:serviceTask id="registerAtolGiveAwayTask" name="Register ATOL give-away transaction" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${registerAtolGiveAwayTask}">
+      <bpmn:extensionElements>
+        <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1j0ucxh</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0eb40gy</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1j0ucxh" sourceRef="ExclusiveGateway_1qdt6cw" targetRef="registerAtolGiveAwayTask" />
+    <bpmn:parallelGateway id="ExclusiveGateway_1qdt6cw">
+      <bpmn:incoming>SequenceFlow_0vhf40k</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1j0ucxh</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1v1mzw1</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_1v1mzw1" sourceRef="ExclusiveGateway_1qdt6cw" targetRef="tpNetGiveAwayTask" />
+    <bpmn:inclusiveGateway id="ExclusiveGateway_1sb31tp">
+      <bpmn:incoming>SequenceFlow_1smhy09</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_00zpcus</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1x4alky</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_1smhy09" sourceRef="receiveAtolGiveAwayRegisterSuccessTask" targetRef="ExclusiveGateway_1sb31tp" />
+    <bpmn:sequenceFlow id="SequenceFlow_1x4alky" sourceRef="ExclusiveGateway_1sb31tp" targetRef="EndEvent_0er95dj" />
+    <bpmn:sequenceFlow id="SequenceFlow_00zpcus" sourceRef="Task_1x99vwq" targetRef="ExclusiveGateway_1sb31tp" />
+  </bpmn:process>
+  <bpmn:message id="Message_1bm3yo6" name="atolGiveAwayFiscal" />
+  <bpmn:message id="Message_0z4mrgc" name="tpnetGiveAwaySuccess" />
+  <bpmn:message id="Message_03vphce" name="tpnetGiveAwayFail" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="give_away">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="160" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0vhf40k_di" bpmnElement="SequenceFlow_0vhf40k">
+        <di:waypoint x="196" y="120" />
+        <di:waypoint x="237" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0eb40gy_di" bpmnElement="SequenceFlow_0eb40gy">
+        <di:waypoint x="441" y="120" />
+        <di:waypoint x="509" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ReceiveTask_0hvtia3_di" bpmnElement="receiveAtolGiveAwayRegisterSuccessTask">
+        <dc:Bounds x="509" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ReceiveTask_1rnv6ky_di" bpmnElement="Task_1x99vwq">
+        <dc:Bounds x="509" y="222" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0vk2aen_di" bpmnElement="SequenceFlow_0vk2aen">
+        <di:waypoint x="442" y="262" />
+        <di:waypoint x="509" y="262" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0er95dj_di" bpmnElement="EndEvent_0er95dj">
+        <dc:Bounds x="754" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_0zg1onk_di" bpmnElement="BoundaryEvent_06rbtly">
+        <dc:Bounds x="517" y="284" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="554" y="321" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1ppfcgl_di" bpmnElement="Task_1jnm4ph">
+        <dc:Bounds x="342" y="391" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_104657u_di" bpmnElement="SequenceFlow_104657u">
+        <di:waypoint x="535" y="320" />
+        <di:waypoint x="535" y="431" />
+        <di:waypoint x="442" y="431" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1233n9p_di" bpmnElement="SequenceFlow_1233n9p">
+        <di:waypoint x="392" y="391" />
+        <di:waypoint x="392" y="302" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_0ezo8vy_di" bpmnElement="tpNetGiveAwayTask">
+        <dc:Bounds x="342" y="222" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1sutxbf_di" bpmnElement="registerAtolGiveAwayTask">
+        <dc:Bounds x="341" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1j0ucxh_di" bpmnElement="SequenceFlow_1j0ucxh">
+        <di:waypoint x="287" y="120" />
+        <di:waypoint x="341" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_0b0h20j_di" bpmnElement="ExclusiveGateway_1qdt6cw">
+        <dc:Bounds x="237" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1v1mzw1_di" bpmnElement="SequenceFlow_1v1mzw1">
+        <di:waypoint x="262" y="145" />
+        <di:waypoint x="262" y="262" />
+        <di:waypoint x="342" y="262" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="InclusiveGateway_1rx9dfk_di" bpmnElement="ExclusiveGateway_1sb31tp">
+        <dc:Bounds x="663" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1smhy09_di" bpmnElement="SequenceFlow_1smhy09">
+        <di:waypoint x="609" y="120" />
+        <di:waypoint x="663" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1x4alky_di" bpmnElement="SequenceFlow_1x4alky">
+        <di:waypoint x="713" y="120" />
+        <di:waypoint x="754" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_00zpcus_di" bpmnElement="SequenceFlow_00zpcus">
+        <di:waypoint x="609" y="262" />
+        <di:waypoint x="688" y="262" />
+        <di:waypoint x="688" y="145" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

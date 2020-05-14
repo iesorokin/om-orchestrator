@@ -1,0 +1,42 @@
+{
+  "buCode": "9",
+  "channel": "SOLUTION",
+  "taskId": "77eb698b-644a-4505-90b7-8e48a93263fe",
+  "taskStatus": "CONFIRMED",
+  "extOrderId": "181200000445",
+  "taskType": "TPNET_POST_PAYMENT",
+  "executionStore": 35,
+  "links": [
+    {
+      "type": "LINK",
+      "link": "https://task-37274.lm.greensight.ru/basket/pay_check_sberbank_brick/?order=181200000445"
+    }
+  ],
+  "pinCode": "55607",
+  "lines": [
+    {
+      "lineStatus": "CONFIRMED",
+      "itemCode": "82013012",
+      "itemName": "Комплект роликов для дверей-купе",
+      "quantity": 1,
+      "unitAmountIncludingVat": 10.731,
+      "taxRate": 0,
+      "unitVatAmount": 0,
+      "extLineId": "f2a9e859-8d46-416f-bea7-97effa5b1ecd",
+      "confirmedQuantity": 15,
+      "depositQuantity": 15
+    },
+    {
+      "lineStatus": "CONFIRMED",
+      "itemCode": "35189603",
+      "itemName": "Комплект роликов для дверей-купе 2",
+      "quantity": 1,
+      "unitAmountIncludingVat": 1.23,
+      "taxRate": 0,
+      "unitVatAmount": 0,
+      "extLineId": "f2a9e859-8d46-416f-bea7-97effa5b1ecd",
+      "confirmedQuantity": 33,
+      "depositQuantity": 33
+    }
+  ]
+}

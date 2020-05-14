@@ -1,0 +1,39 @@
+{
+  "taskId": "77eb698b-644a-4505-90b7-8e48a93263fe",
+  "dateTime": "2019-04-04T10:50:08.704",
+  "correlationKey": "correlationKey",
+  "processInstanceId": "processInstanceId",
+  "giveAwayId": "giveAwayId",
+  "orderId": "181200000445",
+  "storeId": 35,
+  "payer": {
+    "email": "customer@test.test",
+    "phone": "+71234567890"
+  },
+  "products": [
+    {
+      "name": "Комплект роликов для дверей-купе",
+      "price": 156.232221,
+      "quantity": 1,
+      "sum": 156.23,
+      "tax": 10,
+      "supplierInfo":
+      {
+        "inn": "239776",
+        "name": "Поставщик 3000",
+        "phones": [
+          "8 800 235 35 35"
+        ]
+      },
+      "agentInfo": "AGENT"
+    },
+    {
+      "name": "Комплект дверей-купе",
+      "price": 156.232221,
+      "quantity": 2,
+      "sum": 312.46,
+      "tax": 20
+    }
+  ],
+  "total": 468.69
+}

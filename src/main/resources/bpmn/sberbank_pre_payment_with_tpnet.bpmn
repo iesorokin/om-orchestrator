@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0d67ouw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.1">
+  <bpmn:process id="SBERBANK_PREPAYMENT_WITH_TPNET" isExecutable="true">
+    <bpmn:subProcess id="SubProcess_19bdv8i">
+      <bpmn:incoming>SequenceFlow_1h9jk2i</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1fqglbh</bpmn:outgoing>
+      <bpmn:receiveTask id="receivePaymentTask" name="Receive SBERBANK payment" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_0m1bwcb">
+        <bpmn:incoming>SequenceFlow_03imyi0</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0a4f6du</bpmn:outgoing>
+      </bpmn:receiveTask>
+      <bpmn:scriptTask id="RegisterAtolScriptTask" name="Register atol" scriptFormat="Javascript">
+        <bpmn:incoming>SequenceFlow_0pnww8c</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0yh9xl8</bpmn:outgoing>
+        <bpmn:script>execution.setVariable('registerAtol', true)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:receiveTask id="approvePaymentTask" name="Approve payment" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_14xra0h">
+        <bpmn:incoming>SequenceFlow_0yh9xl8</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1gvdsq5</bpmn:outgoing>
+      </bpmn:receiveTask>
+      <bpmn:userTask id="UserTask_0k7roqu" name="Try confirm sberbank">
+        <bpmn:incoming>SequenceFlow_1wxcpax</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1aymvn4</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="ExclusiveGateway_0q6zc9f">
+        <bpmn:incoming>SequenceFlow_15u0sux</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_1ohaut4</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0p40nau</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_1jhffib</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:userTask id="UserTask_0lrd9v2" name="Manual input fiscal data">
+        <bpmn:incoming>SequenceFlow_08fi2oq</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_15u0sux</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="ExclusiveGateway_0z8ysaq">
+        <bpmn:incoming>SequenceFlow_1aymvn4</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_18esdsd</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1j2wt1o</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:boundaryEvent id="expiredPaymentTaskMessage" name="Expired" camunda:asyncAfter="true" camunda:exclusive="false" attachedToRef="receivePaymentTask">
+        <bpmn:outgoing>SequenceFlow_0d5fr44</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_0d52pls" messageRef="Message_040z6y1" />
+      </bpmn:boundaryEvent>
+      <bpmn:startEvent id="StartEvent_0rzpuww">
+        <bpmn:outgoing>SequenceFlow_1ox92ql</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1ox92ql" sourceRef="StartEvent_0rzpuww" targetRef="saveWorkflowIdTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_03imyi0" sourceRef="saveWorkflowIdTask" targetRef="receivePaymentTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_0a4f6du" sourceRef="receivePaymentTask" targetRef="paymentTaskHold" />
+      <bpmn:sequenceFlow id="SequenceFlow_0d5fr44" sourceRef="expiredPaymentTaskMessage" targetRef="paymentTaskExpired" />
+      <bpmn:sequenceFlow id="SequenceFlow_03icisf" sourceRef="paymentTaskExpired" targetRef="endTheProcessTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_0pnww8c" sourceRef="paymentTaskHold" targetRef="RegisterAtolScriptTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_0yh9xl8" sourceRef="RegisterAtolScriptTask" targetRef="approvePaymentTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_1j2wt1o" sourceRef="ExclusiveGateway_0z8ysaq" targetRef="confirmSberbankTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_009t8fk" sourceRef="confirmSberbankTask" targetRef="receiveSberbankConfirmationSuccessEvent" />
+      <bpmn:sequenceFlow id="SequenceFlow_1aymvn4" sourceRef="UserTask_0k7roqu" targetRef="ExclusiveGateway_0z8ysaq" />
+      <bpmn:sequenceFlow id="SequenceFlow_0p40nau" name="fullApporve" sourceRef="ExclusiveGateway_0q6zc9f" targetRef="ScriptTask_1rv19yk">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${fullApprove == true}</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="SequenceFlow_1jhffib" name="partialApprove" sourceRef="ExclusiveGateway_0q6zc9f" targetRef="startRefundProcessTask">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${fullApprove == false}</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:scriptTask id="ScriptTask_1rv19yk" name="Manual input of fiscal" scriptFormat="Javascript">
+        <bpmn:incoming>SequenceFlow_1ok9hso</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_0p40nau</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1ln3gs3</bpmn:outgoing>
+        <bpmn:script>execution.setVariable('manualFiscalData', true)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="SequenceFlow_1ln3gs3" sourceRef="ScriptTask_1rv19yk" targetRef="paymentStatusDepositInProgressTask" />
+      <bpmn:exclusiveGateway id="ExclusiveGateway_0klxi1b">
+        <bpmn:incoming>SequenceFlow_043e9mp</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_15blgvk</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0zxima9</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="SequenceFlow_043e9mp" sourceRef="paymentStatusDepositInProgressTask" targetRef="ExclusiveGateway_0klxi1b" />
+      <bpmn:sequenceFlow id="SequenceFlow_0zxima9" sourceRef="ExclusiveGateway_0klxi1b" targetRef="placeTpnetDepositTask" />
+      <bpmn:userTask id="Task_0jn5iwb" name="Try place deposit">
+        <bpmn:incoming>SequenceFlow_1m5m7hf</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_15blgvk</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="SequenceFlow_15blgvk" sourceRef="Task_0jn5iwb" targetRef="ExclusiveGateway_0klxi1b" />
+      <bpmn:sequenceFlow id="SequenceFlow_1mbdl6i" sourceRef="placeTpnetDepositTask" targetRef="receiveTpNetDepositSuccessEvent" />
+      <bpmn:endEvent id="EndEvent_1js719r">
+        <bpmn:incoming>SequenceFlow_0g01eyr</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_042kw5w" sourceRef="changePaymentStatusPaidTask" targetRef="receivePayemntTaskCompletion" />
+      <bpmn:sequenceFlow id="SequenceFlow_08fi2oq" sourceRef="receiveSberbankConfirmationSuccessEvent" targetRef="UserTask_0lrd9v2" />
+      <bpmn:receiveTask id="receiveSberbankConfirmationSuccessEvent" name="Receive sberbank succes" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_1dtbgp7">
+        <bpmn:incoming>SequenceFlow_009t8fk</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_08fi2oq</bpmn:outgoing>
+      </bpmn:receiveTask>
+      <bpmn:boundaryEvent id="receiveSberbankConfirmationFailEvent" name="Sberbank confirmation fail" camunda:asyncAfter="true" camunda:exclusive="false" attachedToRef="receiveSberbankConfirmationSuccessEvent">
+        <bpmn:outgoing>SequenceFlow_1wxcpax</bpmn:outgoing>
+        <bpmn:messageEventDefinition messageRef="Message_0epbieh" />
+      </bpmn:boundaryEvent>
+      <bpmn:sendTask id="confirmSberbankTask" name="Confirm sberbank" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${confirmSberbankTask}">
+        <bpmn:incoming>SequenceFlow_1j2wt1o</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_009t8fk</bpmn:outgoing>
+      </bpmn:sendTask>
+      <bpmn:endEvent id="EndEvent_04g0pty">
+        <bpmn:incoming>SequenceFlow_0r4cula</bpmn:incoming>
+        <bpmn:terminateEventDefinition />
+      </bpmn:endEvent>
+      <bpmn:serviceTask id="saveWorkflowIdTask" name="Save workflowId" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${saveWorkflowIdTask}">
+        <bpmn:extensionElements>
+          <camunda:properties>
+            <camunda:property />
+          </camunda:properties>
+          <camunda:failedJobRetryTimeCycle>R5/PT5M</camunda:failedJobRetryTimeCycle>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1ox92ql</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_03imyi0</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="paymentTaskHold" name="Change status" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="paymentTaskStatus">HOLD</camunda:inputParameter>
+            <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_0a4f6du</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0pnww8c</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="paymentTaskExpired" name="Change status" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="paymentTaskStatus">EXPIRED</camunda:inputParameter>
+            <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_0d5fr44</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_03icisf</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="paymentStatusDepositInProgressTask" name="Deposit placement in progress" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="paymentTaskStatus">DEPOSIT_IN_PROGRESS</camunda:inputParameter>
+            <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1ln3gs3</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_043e9mp</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="changePaymentStatusPaidTask" name="Change status" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="paymentTaskStatus">PAID</camunda:inputParameter>
+            <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_17mse0c</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_042kw5w</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:boundaryEvent id="BoundaryEvent_0pl1cv9" name="Fiscal data received from ATOL" attachedToRef="UserTask_0lrd9v2">
+        <bpmn:outgoing>SequenceFlow_1ohaut4</bpmn:outgoing>
+        <bpmn:conditionalEventDefinition camunda:variableName="fiscalData">
+          <bpmn:condition xsi:type="bpmn:tFormalExpression">${fiscalData == true}</bpmn:condition>
+        </bpmn:conditionalEventDefinition>
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1ohaut4" sourceRef="BoundaryEvent_0pl1cv9" targetRef="ExclusiveGateway_0q6zc9f" />
+      <bpmn:sendTask id="placeTpnetDepositTask" name="Place TPNET deposit" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${placeTpNetDepositTask}">
+        <bpmn:incoming>SequenceFlow_0zxima9</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1mbdl6i</bpmn:outgoing>
+      </bpmn:sendTask>
+      <bpmn:receiveTask id="receiveTpNetDepositSuccessEvent" name="Receive TPNET success" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_0hkzr64">
+        <bpmn:incoming>SequenceFlow_1mbdl6i</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_17mse0c</bpmn:outgoing>
+      </bpmn:receiveTask>
+      <bpmn:boundaryEvent id="receiveTpNetDepositFailEvent" name="TpNet Deposit Fail" camunda:asyncAfter="true" camunda:exclusive="false" attachedToRef="receiveTpNetDepositSuccessEvent">
+        <bpmn:outgoing>SequenceFlow_1m5m7hf</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_1gmqhj4" messageRef="Message_1g092fa" />
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_17mse0c" sourceRef="receiveTpNetDepositSuccessEvent" targetRef="changePaymentStatusPaidTask" />
+      <bpmn:serviceTask id="approveInProgressTask" name="Change status" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="paymentTaskStatus">APPROVE_IN_PROGRESS</camunda:inputParameter>
+            <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1gvdsq5</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_18esdsd</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_1gvdsq5" sourceRef="approvePaymentTask" targetRef="approveInProgressTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_18esdsd" sourceRef="approveInProgressTask" targetRef="ExclusiveGateway_0z8ysaq" />
+      <bpmn:serviceTask id="startRefundProcessTask" name="Start refund process" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${startRefundProcessTask}">
+        <bpmn:incoming>SequenceFlow_1jhffib</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1ok9hso</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_1ok9hso" sourceRef="startRefundProcessTask" targetRef="ScriptTask_1rv19yk" />
+      <bpmn:sequenceFlow id="SequenceFlow_0r4cula" sourceRef="endTheProcessTask" targetRef="EndEvent_04g0pty" />
+      <bpmn:scriptTask id="endTheProcessTask" name="End the process" scriptFormat="Javascript">
+        <bpmn:incoming>SequenceFlow_03icisf</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0r4cula</bpmn:outgoing>
+        <bpmn:script>execution.setVariable('paymentExpired', true)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="SequenceFlow_15u0sux" sourceRef="UserTask_0lrd9v2" targetRef="ExclusiveGateway_0q6zc9f" />
+      <bpmn:serviceTask id="completePaymentTask" name="Change status" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+        <bpmn:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="paymentTaskStatus">COMPLETED</camunda:inputParameter>
+            <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_0nsz3kf</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0g01eyr</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_0g01eyr" sourceRef="completePaymentTask" targetRef="EndEvent_1js719r" />
+      <bpmn:sequenceFlow id="SequenceFlow_0nsz3kf" sourceRef="receivePayemntTaskCompletion" targetRef="completePaymentTask" />
+      <bpmn:receiveTask id="receivePayemntTaskCompletion" name="Receive completion" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_0jx1th0">
+        <bpmn:incoming>SequenceFlow_042kw5w</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0nsz3kf</bpmn:outgoing>
+      </bpmn:receiveTask>
+      <bpmn:sendTask id="createTpnetItsmTicketTask" name="Create ITSM incident" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${createTpnetItsmTicketTask}">
+        <bpmn:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="tpnetOperationType">DEPOSIT</camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:failedJobRetryTimeCycle>R3/PT15M</camunda:failedJobRetryTimeCycle>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_0fpp2gb</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1kqvpp9</bpmn:outgoing>
+      </bpmn:sendTask>
+      <bpmn:sequenceFlow id="SequenceFlow_0fpp2gb" sourceRef="receiveTpNetSuccessTimer" targetRef="createTpnetItsmTicketTask" />
+      <bpmn:endEvent id="EndEvent_1jf38ya">
+        <bpmn:incoming>SequenceFlow_1kqvpp9</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1kqvpp9" sourceRef="createTpnetItsmTicketTask" targetRef="EndEvent_1jf38ya" />
+      <bpmn:boundaryEvent id="receiveTpNetSuccessTimer" name="20 min" cancelActivity="false" attachedToRef="receiveTpNetDepositSuccessEvent">
+        <bpmn:outgoing>SequenceFlow_0fpp2gb</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_00kfvz8">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT20M</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1wxcpax" sourceRef="receiveSberbankConfirmationFailEvent" targetRef="UserTask_0k7roqu" />
+      <bpmn:sequenceFlow id="SequenceFlow_1m5m7hf" sourceRef="receiveTpNetDepositFailEvent" targetRef="Task_0jn5iwb" />
+      <bpmn:textAnnotation id="TextAnnotation_1qujltv">
+        <bpmn:text>status = HOLD</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:textAnnotation id="TextAnnotation_19e7pt9">
+        <bpmn:text>status = EXPIRED</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:textAnnotation id="TextAnnotation_1n1gy6h">
+        <bpmn:text>status = APPROVE_IN_PROGRESS</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_10vw08x" sourceRef="paymentTaskExpired" targetRef="TextAnnotation_19e7pt9" />
+      <bpmn:association id="Association_0zogxc0" sourceRef="paymentTaskHold" targetRef="TextAnnotation_1qujltv" />
+      <bpmn:textAnnotation id="TextAnnotation_1rgp8ze">
+        <bpmn:text>status = DEPOSIT_IN_PROGRESS</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_144mdyw" sourceRef="paymentStatusDepositInProgressTask" targetRef="TextAnnotation_1rgp8ze" />
+      <bpmn:textAnnotation id="TextAnnotation_1q7i1p3">
+        <bpmn:text>status = PAID</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_07m40b8" sourceRef="changePaymentStatusPaidTask" targetRef="TextAnnotation_1q7i1p3" />
+      <bpmn:association id="Association_0rb0ehl" sourceRef="approveInProgressTask" targetRef="TextAnnotation_1n1gy6h" />
+      <bpmn:textAnnotation id="TextAnnotation_09dzdx0">
+        <bpmn:text>status = COMPLETED</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_0et61dg" sourceRef="completePaymentTask" targetRef="TextAnnotation_09dzdx0" />
+    </bpmn:subProcess>
+    <bpmn:startEvent id="StartEvent_0fsugvu">
+      <bpmn:outgoing>SequenceFlow_0c5eiwf</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0c5eiwf" sourceRef="StartEvent_0fsugvu" targetRef="ExclusiveGateway_0556urv" />
+    <bpmn:endEvent id="EndEvent_08cobrr">
+      <bpmn:incoming>SequenceFlow_1fqglbh</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1fqglbh" sourceRef="SubProcess_19bdv8i" targetRef="EndEvent_08cobrr" />
+    <bpmn:sequenceFlow id="SequenceFlow_1h9jk2i" sourceRef="ExclusiveGateway_0556urv" targetRef="SubProcess_19bdv8i" />
+    <bpmn:parallelGateway id="ExclusiveGateway_0556urv">
+      <bpmn:incoming>SequenceFlow_0c5eiwf</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1h9jk2i</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_00bwely</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:subProcess id="SubProcess_19kixyy">
+      <bpmn:incoming>SequenceFlow_00bwely</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1q8tkkj</bpmn:outgoing>
+      <bpmn:startEvent id="StartEvent_17xpx9r">
+        <bpmn:outgoing>SequenceFlow_0jqhkfv</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0zq1z4u" name="Allow register ATOL">
+        <bpmn:incoming>SequenceFlow_0jqhkfv</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1cw2otm</bpmn:outgoing>
+        <bpmn:conditionalEventDefinition id="ConditionalEventDefinition_11ayiez" camunda:variableName="registerAtol">
+          <bpmn:condition xsi:type="bpmn:tFormalExpression">${registerAtol == true}</bpmn:condition>
+        </bpmn:conditionalEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:receiveTask id="receiveAtolSuccessTask" name="Receive ATOL success" camunda:asyncAfter="true" camunda:exclusive="false" messageRef="Message_1jg56rw">
+        <bpmn:incoming>SequenceFlow_0j6twin</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_19960kb</bpmn:outgoing>
+      </bpmn:receiveTask>
+      <bpmn:boundaryEvent id="BoundaryEvent_1rx70ss" name="Manual input of fiscal" attachedToRef="receiveAtolSuccessTask">
+        <bpmn:outgoing>SequenceFlow_0qphdg6</bpmn:outgoing>
+        <bpmn:conditionalEventDefinition>
+          <bpmn:condition xsi:type="bpmn:tFormalExpression">${manualFiscalData == true}</bpmn:condition>
+        </bpmn:conditionalEventDefinition>
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_0jqhkfv" sourceRef="StartEvent_17xpx9r" targetRef="IntermediateCatchEvent_0zq1z4u" />
+      <bpmn:sequenceFlow id="SequenceFlow_1cw2otm" sourceRef="IntermediateCatchEvent_0zq1z4u" targetRef="registerTransactionInAtolTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_19960kb" sourceRef="receiveAtolSuccessTask" targetRef="saveDataFromAtolServiceTask" />
+      <bpmn:scriptTask id="ScriptTask_04fje7y" name="Fiscal data is available" scriptFormat="Javascript">
+        <bpmn:incoming>SequenceFlow_0hc0e3b</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0gm0uzr</bpmn:outgoing>
+        <bpmn:script>execution.setVariable('fiscalData', true)</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="SequenceFlow_0hc0e3b" sourceRef="saveDataFromAtolServiceTask" targetRef="ScriptTask_04fje7y" />
+      <bpmn:endEvent id="EndEvent_1d6l5ny">
+        <bpmn:incoming>SequenceFlow_0gm0uzr</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_0gm0uzr" sourceRef="ScriptTask_04fje7y" targetRef="EndEvent_1d6l5ny" />
+      <bpmn:serviceTask id="registerTransactionInAtolTask" name="Register transaction in Atol" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${registerTransactionInAtolTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1cw2otm</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1e9pzwe</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="saveDataFromAtolServiceTask" name="Save fiscal data from ATOL to payment task" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${saveDataFromAtolTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_19960kb</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_0qphdg6</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0hc0e3b</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_0qphdg6" sourceRef="BoundaryEvent_1rx70ss" targetRef="saveDataFromAtolServiceTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_1e9pzwe" sourceRef="registerTransactionInAtolTask" targetRef="updateTaskByRegisteredTransactionTask" />
+      <bpmn:sequenceFlow id="SequenceFlow_0j6twin" sourceRef="updateTaskByRegisteredTransactionTask" targetRef="receiveAtolSuccessTask" />
+      <bpmn:serviceTask id="updateTaskByRegisteredTransactionTask" name="Update task by registered transaction" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${updateTaskByRegisteredTransactionTask}">
+        <bpmn:extensionElements>
+          <camunda:failedJobRetryTimeCycle>R3/PT5M</camunda:failedJobRetryTimeCycle>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1e9pzwe</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0j6twin</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:textAnnotation id="TextAnnotation_0un3lf4">
+        <bpmn:text>Cancel register transaction in Atol</bpmn:text>
+      </bpmn:textAnnotation>
+      <bpmn:association id="Association_0x8w7wv" sourceRef="BoundaryEvent_1rx70ss" targetRef="TextAnnotation_0un3lf4" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="SequenceFlow_00bwely" sourceRef="ExclusiveGateway_0556urv" targetRef="SubProcess_19kixyy" />
+    <bpmn:endEvent id="EndEvent_12scp9q">
+      <bpmn:incoming>SequenceFlow_1q8tkkj</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1q8tkkj" sourceRef="SubProcess_19kixyy" targetRef="EndEvent_12scp9q" />
+    <bpmn:sequenceFlow id="SequenceFlow_08v3l5h" sourceRef="receivePrepaymentFullCancellationEvent" targetRef="cancelPrepaymentTask" />
+    <bpmn:boundaryEvent id="receivePrepaymentFullCancellationEvent" name="Full cancel" attachedToRef="SubProcess_19bdv8i">
+      <bpmn:outgoing>SequenceFlow_08v3l5h</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_0zdozs6" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="EndEvent_0vbkj0f">
+      <bpmn:incoming>SequenceFlow_0wufqk9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0wufqk9" sourceRef="cancelPrepaymentTask" targetRef="EndEvent_0vbkj0f" />
+    <bpmn:boundaryEvent id="BoundaryEvent_1k8cz0o" name="End the process" attachedToRef="SubProcess_19bdv8i">
+      <bpmn:outgoing>SequenceFlow_0qa9t5w</bpmn:outgoing>
+      <bpmn:conditionalEventDefinition>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">${paymentExpired == true}</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="EndEvent_1f7n88e">
+      <bpmn:incoming>SequenceFlow_0qa9t5w</bpmn:incoming>
+      <bpmn:terminateEventDefinition />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0qa9t5w" sourceRef="BoundaryEvent_1k8cz0o" targetRef="EndEvent_1f7n88e" />
+    <bpmn:serviceTask id="cancelPrepaymentTask" name="Change status" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${changePaymentTaskStatusTask}">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="paymentTaskStatus">REFUND</camunda:inputParameter>
+          <camunda:inputParameter name="paymentTaskId">${paymentTaskId}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_08v3l5h</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0wufqk9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:textAnnotation id="TextAnnotation_0l0xpnm">
+      <bpmn:text>status = REFUND</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0ijrgbx" sourceRef="cancelPrepaymentTask" targetRef="TextAnnotation_0l0xpnm" />
+  </bpmn:process>
+  <bpmn:message id="Message_0m1bwcb" name="sberbankPaymentReceived" />
+  <bpmn:message id="Message_040z6y1" name="sberbankPaymentExpired" />
+  <bpmn:message id="Message_14xra0h" name="approvePayment" />
+  <bpmn:error id="Error_1cuswsj" name="Error_38t9107" />
+  <bpmn:message id="Message_0azuwv7" name="tpnetDepositSuccess" />
+  <bpmn:message id="Message_1jg56rw" name="atolRegisterSuccess" />
+  <bpmn:message id="Message_0shyl29" name="atolRegisterFail" />
+  <bpmn:error id="Error_08ww2k4" name="Error_1di6hrc" />
+  <bpmn:message id="Message_1o27ofc" name="receiveAtolID" />
+  <bpmn:message id="Message_1dtbgp7" name="receiveSberbankConfirmationSuccess" />
+  <bpmn:message id="Message_0epbieh" name="receiveSberbankConfirmationFail" />
+  <bpmn:message id="Message_13gtjo6" name="Message_3cmj0ok" />
+  <bpmn:error id="Error_0p1tgs9" name="Error_2tvbsnm" />
+  <bpmn:error id="Error_1mdb4ez" name="Error_180k8pl" errorCode="ATOL_REGISTRATION_ERROR" />
+  <bpmn:message id="Message_0zdozs6" name="cancelPrepayment" />
+  <bpmn:message id="Message_17npjxk" name="tpnetDepositFail" />
+  <bpmn:message id="Message_0hkzr64" name="tpnetDepositSuccess" />
+  <bpmn:message id="Message_1g092fa" name="tpnetDepositFail" />
+  <bpmn:message id="Message_0jx1th0" name="receiveTaskCompletion" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SBERBANK_PREPAYMENT_WITH_TPNET">
+      <bpmndi:BPMNShape id="ReceiveTask_108b3st_di" bpmnElement="receivePaymentTask">
+        <dc:Bounds x="681" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0fsd6ve_di" bpmnElement="RegisterAtolScriptTask">
+        <dc:Bounds x="979" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ReceiveTask_13vyi0a_di" bpmnElement="approvePaymentTask">
+        <dc:Bounds x="1115" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1qujltv_di" bpmnElement="TextAnnotation_1qujltv">
+        <dc:Bounds x="934" y="748" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_19e7pt9_di" bpmnElement="TextAnnotation_19e7pt9">
+        <dc:Bounds x="824" y="1091" width="122" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1n1gy6h_di" bpmnElement="TextAnnotation_1n1gy6h">
+        <dc:Bounds x="1188" y="733" width="242" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0k7roqu_di" bpmnElement="UserTask_0k7roqu">
+        <dc:Bounds x="1368" y="1153" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0q6zc9f_di" bpmnElement="ExclusiveGateway_0q6zc9f" isMarkerVisible="true">
+        <dc:Bounds x="1905" y="843" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0lrd9v2_di" bpmnElement="UserTask_0lrd9v2">
+        <dc:Bounds x="1757" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0z8ysaq_di" bpmnElement="ExclusiveGateway_0z8ysaq" isMarkerVisible="true">
+        <dc:Bounds x="1393" y="843" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_0sv7x0i_di" bpmnElement="expiredPaymentTaskMessage">
+        <dc:Bounds x="732" y="890" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="770" y="930" width="38" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_03imyi0_di" bpmnElement="SequenceFlow_03imyi0">
+        <di:waypoint x="624" y="868" />
+        <di:waypoint x="681" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0a4f6du_di" bpmnElement="SequenceFlow_0a4f6du">
+        <di:waypoint x="781" y="868" />
+        <di:waypoint x="835" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0d5fr44_di" bpmnElement="SequenceFlow_0d5fr44">
+        <di:waypoint x="750" y="926" />
+        <di:waypoint x="750" y="979" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_03icisf_di" bpmnElement="SequenceFlow_03icisf">
+        <di:waypoint x="750" y="1059" />
+        <di:waypoint x="750" y="1100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_10vw08x_di" bpmnElement="Association_10vw08x">
+        <di:waypoint x="799" y="1051" />
+        <di:waypoint x="861" y="1091" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0pnww8c_di" bpmnElement="SequenceFlow_0pnww8c">
+        <di:waypoint x="935" y="868" />
+        <di:waypoint x="979" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0zogxc0_di" bpmnElement="Association_0zogxc0">
+        <di:waypoint x="923" y="828" />
+        <di:waypoint x="971" y="778" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0yh9xl8_di" bpmnElement="SequenceFlow_0yh9xl8">
+        <di:waypoint x="1079" y="868" />
+        <di:waypoint x="1115" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1j2wt1o_di" bpmnElement="SequenceFlow_1j2wt1o">
+        <di:waypoint x="1443" y="868" />
+        <di:waypoint x="1472" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_009t8fk_di" bpmnElement="SequenceFlow_009t8fk">
+        <di:waypoint x="1572" y="868" />
+        <di:waypoint x="1607" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1aymvn4_di" bpmnElement="SequenceFlow_1aymvn4">
+        <di:waypoint x="1418" y="1153" />
+        <di:waypoint x="1418" y="893" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0p40nau_di" bpmnElement="SequenceFlow_0p40nau">
+        <di:waypoint x="1955" y="868" />
+        <di:waypoint x="2130" y="868" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1953" y="843" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jhffib_di" bpmnElement="SequenceFlow_1jhffib">
+        <di:waypoint x="1930" y="843" />
+        <di:waypoint x="1930" y="748" />
+        <di:waypoint x="2008" y="748" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1928" y="728" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0rzpuww_di" bpmnElement="StartEvent_0rzpuww">
+        <dc:Bounds x="418" y="850" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ox92ql_di" bpmnElement="SequenceFlow_1ox92ql">
+        <di:waypoint x="454" y="868" />
+        <di:waypoint x="524" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_19bdv8i_di" bpmnElement="SubProcess_19bdv8i" isExpanded="true">
+        <dc:Bounds x="359" y="650" width="2931" height="696" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_0fsugvu_di" bpmnElement="StartEvent_0fsugvu">
+        <dc:Bounds x="156" y="978" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0c5eiwf_di" bpmnElement="SequenceFlow_0c5eiwf">
+        <di:waypoint x="192" y="996" />
+        <di:waypoint x="247" y="996" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_08cobrr_di" bpmnElement="EndEvent_08cobrr">
+        <dc:Bounds x="3328" y="978" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1fqglbh_di" bpmnElement="SequenceFlow_1fqglbh">
+        <di:waypoint x="3290" y="996" />
+        <di:waypoint x="3328" y="996" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_1rv19yk_di" bpmnElement="ScriptTask_1rv19yk">
+        <dc:Bounds x="2130" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ln3gs3_di" bpmnElement="SequenceFlow_1ln3gs3">
+        <di:waypoint x="2230" y="868" />
+        <di:waypoint x="2283" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1rgp8ze_di" bpmnElement="TextAnnotation_1rgp8ze">
+        <dc:Bounds x="2224" y="675" width="217" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_144mdyw_di" bpmnElement="Association_144mdyw">
+        <di:waypoint x="2333" y="828" />
+        <di:waypoint x="2333" y="705" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0klxi1b_di" bpmnElement="ExclusiveGateway_0klxi1b" isMarkerVisible="true">
+        <dc:Bounds x="2419" y="843" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_043e9mp_di" bpmnElement="SequenceFlow_043e9mp">
+        <di:waypoint x="2383" y="868" />
+        <di:waypoint x="2419" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zxima9_di" bpmnElement="SequenceFlow_0zxima9">
+        <di:waypoint x="2469" y="868" />
+        <di:waypoint x="2519" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1vieufz_di" bpmnElement="Task_0jn5iwb">
+        <dc:Bounds x="2394" y="1088" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_15blgvk_di" bpmnElement="SequenceFlow_15blgvk">
+        <di:waypoint x="2444" y="1088" />
+        <di:waypoint x="2444" y="1002" />
+        <di:waypoint x="2444" y="893" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mbdl6i_di" bpmnElement="SequenceFlow_1mbdl6i">
+        <di:waypoint x="2619" y="868" />
+        <di:waypoint x="2675" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1js719r_di" bpmnElement="EndEvent_1js719r">
+        <dc:Bounds x="3227" y="850" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1q7i1p3_di" bpmnElement="TextAnnotation_1q7i1p3">
+        <dc:Bounds x="2768" y="766" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_07m40b8_di" bpmnElement="Association_07m40b8">
+        <di:waypoint x="2844" y="828" />
+        <di:waypoint x="2826" y="796" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_042kw5w_di" bpmnElement="SequenceFlow_042kw5w">
+        <di:waypoint x="2917" y="868" />
+        <di:waypoint x="2951" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1h9jk2i_di" bpmnElement="SequenceFlow_1h9jk2i">
+        <di:waypoint x="297" y="996" />
+        <di:waypoint x="328" y="996" />
+        <di:waypoint x="328" y="999" />
+        <di:waypoint x="359" y="999" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_0w514qj_di" bpmnElement="ExclusiveGateway_0556urv">
+        <dc:Bounds x="247" y="971" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_17xpx9r_di" bpmnElement="StartEvent_17xpx9r">
+        <dc:Bounds x="418" y="193" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_0zq1z4u_di" bpmnElement="IntermediateCatchEvent_0zq1z4u">
+        <dc:Bounds x="602" y="193" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="586" y="245" width="67" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0jqhkfv_di" bpmnElement="SequenceFlow_0jqhkfv">
+        <di:waypoint x="454" y="211" />
+        <di:waypoint x="602" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ReceiveTask_1m0pbv7_di" bpmnElement="receiveAtolSuccessTask">
+        <dc:Bounds x="1007" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_0h3fq9v_di" bpmnElement="BoundaryEvent_1rx70ss">
+        <dc:Bounds x="1065" y="233" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1001" y="266" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_19kixyy_di" bpmnElement="SubProcess_19kixyy" isExpanded="true">
+        <dc:Bounds x="353" y="86" width="1317" height="510" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1cw2otm_di" bpmnElement="SequenceFlow_1cw2otm">
+        <di:waypoint x="638" y="211" />
+        <di:waypoint x="680" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_19960kb_di" bpmnElement="SequenceFlow_19960kb">
+        <di:waypoint x="1107" y="211" />
+        <di:waypoint x="1226" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_04fje7y_di" bpmnElement="ScriptTask_04fje7y">
+        <dc:Bounds x="1404" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hc0e3b_di" bpmnElement="SequenceFlow_0hc0e3b">
+        <di:waypoint x="1326" y="211" />
+        <di:waypoint x="1404" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1d6l5ny_di" bpmnElement="EndEvent_1d6l5ny">
+        <dc:Bounds x="1582" y="193" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0gm0uzr_di" bpmnElement="SequenceFlow_0gm0uzr">
+        <di:waypoint x="1504" y="211" />
+        <di:waypoint x="1582" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_00bwely_di" bpmnElement="SequenceFlow_00bwely">
+        <di:waypoint x="272" y="971" />
+        <di:waypoint x="272" y="342" />
+        <di:waypoint x="353" y="342" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_12scp9q_di" bpmnElement="EndEvent_12scp9q">
+        <dc:Bounds x="1699" y="324" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1q8tkkj_di" bpmnElement="SequenceFlow_1q8tkkj">
+        <di:waypoint x="1670" y="342" />
+        <di:waypoint x="1699" y="342" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_08fi2oq_di" bpmnElement="SequenceFlow_08fi2oq">
+        <di:waypoint x="1707" y="868" />
+        <di:waypoint x="1757" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ReceiveTask_1k6nbjr_di" bpmnElement="receiveSberbankConfirmationSuccessEvent">
+        <dc:Bounds x="1607" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_0pf6oaz_di" bpmnElement="receiveSberbankConfirmationFailEvent">
+        <dc:Bounds x="1664" y="890" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1670" y="927" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SendTask_1ytibsj_di" bpmnElement="confirmSberbankTask">
+        <dc:Bounds x="1472" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_08v3l5h_di" bpmnElement="SequenceFlow_08v3l5h">
+        <di:waypoint x="2336" y="1364" />
+        <di:waypoint x="2336" y="1435" />
+        <di:waypoint x="2380" y="1435" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BoundaryEvent_1u1ncxi_di" bpmnElement="receivePrepaymentFullCancellationEvent">
+        <dc:Bounds x="2318" y="1328" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2273" y="1370" width="53" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0vbkj0f_di" bpmnElement="EndEvent_0vbkj0f">
+        <dc:Bounds x="2552" y="1417" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0wufqk9_di" bpmnElement="SequenceFlow_0wufqk9">
+        <di:waypoint x="2480" y="1435" />
+        <di:waypoint x="2552" y="1435" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_07j9fk8_di" bpmnElement="EndEvent_04g0pty">
+        <dc:Bounds x="732" y="1224" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0k7puvb_di" bpmnElement="saveWorkflowIdTask">
+        <dc:Bounds x="524" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0b65aaw_di" bpmnElement="registerTransactionInAtolTask">
+        <dc:Bounds x="680" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0zuzv1j_di" bpmnElement="paymentTaskHold">
+        <dc:Bounds x="835" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0m2dzg0_di" bpmnElement="paymentTaskExpired">
+        <dc:Bounds x="700" y="979" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1rhlpaq_di" bpmnElement="paymentStatusDepositInProgressTask">
+        <dc:Bounds x="2283" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1cmesmq_di" bpmnElement="changePaymentStatusPaidTask">
+        <dc:Bounds x="2817" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_10lxalo_di" bpmnElement="saveDataFromAtolServiceTask">
+        <dc:Bounds x="1226" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_10icsfx_di" bpmnElement="BoundaryEvent_0pl1cv9">
+        <dc:Bounds x="1812" y="890" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1851" y="923" width="67" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ohaut4_di" bpmnElement="SequenceFlow_1ohaut4">
+        <di:waypoint x="1830" y="926" />
+        <di:waypoint x="1830" y="965" />
+        <di:waypoint x="1930" y="965" />
+        <di:waypoint x="1930" y="893" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_1flvf4h_di" bpmnElement="placeTpnetDepositTask">
+        <dc:Bounds x="2519" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ReceiveTask_1xvihaq_di" bpmnElement="receiveTpNetDepositSuccessEvent">
+        <dc:Bounds x="2675" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_0ffzhwa_di" bpmnElement="receiveTpNetDepositFailEvent">
+        <dc:Bounds x="2684" y="890" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2646" y="927" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_17mse0c_di" bpmnElement="SequenceFlow_17mse0c">
+        <di:waypoint x="2775" y="868" />
+        <di:waypoint x="2817" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0hsc0k6_di" bpmnElement="approveInProgressTask">
+        <dc:Bounds x="1259" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1gvdsq5_di" bpmnElement="SequenceFlow_1gvdsq5">
+        <di:waypoint x="1215" y="868" />
+        <di:waypoint x="1259" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0rb0ehl_di" bpmnElement="Association_0rb0ehl">
+        <di:waypoint x="1309" y="828" />
+        <di:waypoint x="1309" y="763" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_18esdsd_di" bpmnElement="SequenceFlow_18esdsd">
+        <di:waypoint x="1359" y="868" />
+        <di:waypoint x="1393" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1gg0a98_di" bpmnElement="startRefundProcessTask">
+        <dc:Bounds x="2008" y="708" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ok9hso_di" bpmnElement="SequenceFlow_1ok9hso">
+        <di:waypoint x="2108" y="748" />
+        <di:waypoint x="2169" y="748" />
+        <di:waypoint x="2169" y="828" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0r4cula_di" bpmnElement="SequenceFlow_0r4cula">
+        <di:waypoint x="750" y="1180" />
+        <di:waypoint x="750" y="1224" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ScriptTask_1dlfqja_di" bpmnElement="endTheProcessTask">
+        <dc:Bounds x="700" y="1100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BoundaryEvent_065r7rs_di" bpmnElement="BoundaryEvent_1k8cz0o">
+        <dc:Bounds x="743" y="1328" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="784" y="1359" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0k5qcgi_di" bpmnElement="EndEvent_1f7n88e">
+        <dc:Bounds x="732" y="1417" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qa9t5w_di" bpmnElement="SequenceFlow_0qa9t5w">
+        <di:waypoint x="761" y="1364" />
+        <di:waypoint x="761" y="1421" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1rak914_di" bpmnElement="cancelPrepaymentTask">
+        <dc:Bounds x="2380" y="1395" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_15u0sux_di" bpmnElement="SequenceFlow_15u0sux">
+        <di:waypoint x="1857" y="868" />
+        <di:waypoint x="1905" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0ddy2se_di" bpmnElement="completePaymentTask">
+        <dc:Bounds x="3084" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0g01eyr_di" bpmnElement="SequenceFlow_0g01eyr">
+        <di:waypoint x="3184" y="868" />
+        <di:waypoint x="3227" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0nsz3kf_di" bpmnElement="SequenceFlow_0nsz3kf">
+        <di:waypoint x="3051" y="868" />
+        <di:waypoint x="3084" y="868" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ReceiveTask_1vxwz2y_di" bpmnElement="receivePayemntTaskCompletion">
+        <dc:Bounds x="2951" y="828" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SendTask_0qobh30_di" bpmnElement="createTpnetItsmTicketTask">
+        <dc:Bounds x="2817" y="979" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fpp2gb_di" bpmnElement="SequenceFlow_0fpp2gb">
+        <di:waypoint x="2750" y="926" />
+        <di:waypoint x="2750" y="1019" />
+        <di:waypoint x="2817" y="1019" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1jf38ya_di" bpmnElement="EndEvent_1jf38ya">
+        <dc:Bounds x="2972" y="1001" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1kqvpp9_di" bpmnElement="SequenceFlow_1kqvpp9">
+        <di:waypoint x="2917" y="1019" />
+        <di:waypoint x="2972" y="1019" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BoundaryEvent_0nxg5kt_di" bpmnElement="receiveTpNetSuccessTimer">
+        <dc:Bounds x="2732" y="890" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2763" y="927" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_09dzdx0_di" bpmnElement="TextAnnotation_09dzdx0">
+        <dc:Bounds x="3070" y="748" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0et61dg_di" bpmnElement="Association_0et61dg">
+        <di:waypoint x="3128" y="828" />
+        <di:waypoint x="3123" y="788" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0l0xpnm_di" bpmnElement="TextAnnotation_0l0xpnm">
+        <dc:Bounds x="2510" y="1480" width="130" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0ijrgbx_di" bpmnElement="Association_0ijrgbx">
+        <di:waypoint x="2480" y="1456" />
+        <di:waypoint x="2539" y="1480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1wxcpax_di" bpmnElement="SequenceFlow_1wxcpax">
+        <di:waypoint x="1682" y="926" />
+        <di:waypoint x="1682" y="1193" />
+        <di:waypoint x="1468" y="1193" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1m5m7hf_di" bpmnElement="SequenceFlow_1m5m7hf">
+        <di:waypoint x="2702" y="926" />
+        <di:waypoint x="2702" y="1128" />
+        <di:waypoint x="2494" y="1128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qphdg6_di" bpmnElement="SequenceFlow_0qphdg6">
+        <di:waypoint x="1083" y="269" />
+        <di:waypoint x="1083" y="340" />
+        <di:waypoint x="1276" y="340" />
+        <di:waypoint x="1276" y="251" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0un3lf4_di" bpmnElement="TextAnnotation_0un3lf4">
+        <dc:Bounds x="1110" y="260" width="99.99274099883856" height="53.426248548199766" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0x8w7wv_di" bpmnElement="Association_0x8w7wv">
+        <di:waypoint x="1099" y="259" />
+        <di:waypoint x="1110" y="264" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1e9pzwe_di" bpmnElement="SequenceFlow_1e9pzwe">
+        <di:waypoint x="780" y="211" />
+        <di:waypoint x="840" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0j6twin_di" bpmnElement="SequenceFlow_0j6twin">
+        <di:waypoint x="940" y="211" />
+        <di:waypoint x="1007" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_14bqu8u_di" bpmnElement="updateTaskByRegisteredTransactionTask">
+        <dc:Bounds x="840" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

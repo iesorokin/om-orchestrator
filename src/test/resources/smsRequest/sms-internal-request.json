@@ -1,0 +1,12 @@
+{
+  "event": "event",
+  "receiver": "receiver",
+  "sendingType": "sendingType",
+  "storeId": 1,
+  "templateData": {
+    "one": "one",
+    "two": "two"
+  },
+  "templateOwner": "templateOwner"
+}
+

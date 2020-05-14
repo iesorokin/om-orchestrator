@@ -1,0 +1,75 @@
+{
+  "solutionId": "12345678",
+  "transactionId": "87654321",
+  "pinCode": "1234",
+  "originStore": "5",
+  "documentVersion": "1",
+  "documentFormatVersion": "v1",
+  "creationInformation": {
+    "createdBy": "tunnel",
+    "created": "2018.11.11 01:02:03.400",
+    "channel": "bitrix",
+    "deviceType": "1",
+    "frontApplication": "aem"
+  },
+  "lastUpdateInformation": {
+    "updateBy": "booking",
+    "updated": "2018.11.11 01:02:03.400"
+  },
+  "solutionStatus": "DRAFT",
+  "workflowId": "12345678",
+  "solutionLines": [
+    {
+      "itemReference": "itemReference",
+      "lineId": "01",
+      "longTail": true,
+      "stock": 10,
+      "vat": 3,
+      "confirmedQuantity": 1,
+      "type": "PRODUCT",
+      "price": 1,
+      "quantity": 10,
+      "name": "name1",
+      "discount": {
+        "type": "AMOUNT",
+        "reason": "reason1",
+        "typeValue": 1,
+        "actor": "actor"
+      }
+    },
+    {
+      "itemReference": "itemReference",
+      "lineId": "02",
+      "longTail": true,
+      "stock": 10,
+      "vat": 3,
+      "confirmedQuantity": 1,
+      "type": "PRODUCT",
+      "price": 1,
+      "quantity": 10,
+      "name": "name2",
+      "discount": {
+        "type": "AMOUNT",
+        "reason": "reason2",
+        "typeValue": 1,
+        "actor": "actor"
+      }
+    }
+  ],
+  "customers": [
+    {
+      "customerNumber": "1234",
+      "name": "customer name",
+      "surname": "customer surname",
+      "phone": {
+        "primary": "+71234567890",
+        "secondary": "+70987654321"
+      },
+      "email": "customer@test.test",
+      "type": "type",
+      "roles": [
+        "PAYER"
+      ]
+    }
+  ]
+}
