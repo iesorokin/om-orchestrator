@@ -1,9 +1,9 @@
-package ru.iesorokin.payment.orchestrator.core.service.giveaway
+package ru.iesorokin.orchestrator.core.service.giveaway
 
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.ATOL_GIVE_AWAY_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.ATOL_GIVE_AWAY_SUCCESS
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
 
 @Service
 class AtolGiveAwayMessageService(

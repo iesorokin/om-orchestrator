@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.refund
+package ru.iesorokin.orchestrator.camunda.bpmn.refund
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.times
@@ -10,23 +10,23 @@ import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.After
 import org.junit.Assert.assertNotNull
 import org.junit.Test
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.SOLUTION_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REFUND_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.*
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement.RECEIVE_ATOL_REFUND_SUCCESS_RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement.REGISTER_REFUND_ATOL_TRANSACTION_TASK
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.SOLUTION_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REFUND_ID
+import ru.iesorokin.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.*
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement.RECEIVE_ATOL_REFUND_SUCCESS_RECEIVE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement.REGISTER_REFUND_ATOL_TRANSACTION_TASK
 
 class RegisterRefundAtolTaskTest : RefundCamundaTest() {
     private val solutionId = "solutionId"

@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.sleuth
+package ru.iesorokin.orchestrator.sleuth
 
 import mu.KotlinLogging
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.sleuth.SleuthEnum.PROCESS_ID
-import ru.iesorokin.payment.orchestrator.sleuth.SleuthEnum.SOLUTION_ID
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.sleuth.SleuthEnum.PROCESS_ID
+import ru.iesorokin.orchestrator.sleuth.SleuthEnum.SOLUTION_ID
 import ru.iesorokin.utility.sleuthbase.MdcService
 
 private val log = KotlinLogging.logger {}

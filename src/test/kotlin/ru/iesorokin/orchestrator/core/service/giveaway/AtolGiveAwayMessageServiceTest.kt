@@ -1,13 +1,13 @@
-package ru.iesorokin.payment.orchestrator.core.service.giveaway
+package ru.iesorokin.orchestrator.core.service.giveaway
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.GIVE_AWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_ATOL_GIVE_AWAY_REGISTER_SUCCESS_TASK
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionFiscalData
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.GIVE_AWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_ATOL_GIVE_AWAY_REGISTER_SUCCESS_TASK
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionFiscalData
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
 
 class AtolGiveAwayMessageServiceTest : BaseSpringBootWithCamundaTest() {
     @Autowired

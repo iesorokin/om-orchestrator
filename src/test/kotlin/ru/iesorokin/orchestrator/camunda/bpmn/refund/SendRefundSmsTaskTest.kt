@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.refund
+package ru.iesorokin.orchestrator.camunda.bpmn.refund
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
@@ -6,13 +6,13 @@ import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests
 import org.junit.After
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
 
 class SendRefundSmsTaskTest : RefundCamundaTest() {
     private val paymentTaskId = "12345678"

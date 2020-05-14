@@ -1,14 +1,14 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.converter
+package ru.iesorokin.orchestrator.output.client.payment.task.converter
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Assert
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.domain.AgencyAgreement
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAwayExternalLine
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.AddGiveAwayLineRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.GiveAwayResponseItem
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.GiveAwayResponseItemLine
+import ru.iesorokin.orchestrator.core.domain.AgencyAgreement
+import ru.iesorokin.orchestrator.core.domain.GiveAway
+import ru.iesorokin.orchestrator.core.domain.GiveAwayExternalLine
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.AddGiveAwayLineRequest
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.GiveAwayResponseItem
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.GiveAwayResponseItemLine
 import java.math.BigDecimal
 import java.time.LocalDateTime
 

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.input.stream.receiver
+package ru.iesorokin.orchestrator.input.stream.receiver
 
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyZeroInteractions
@@ -7,11 +7,11 @@ import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.messaging.support.MessageBuilder
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
-import ru.iesorokin.payment.orchestrator.core.service.prepayment.ProcessCancellationService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.CancelProcessMessage
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.service.prepayment.ProcessCancellationService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.CancelProcessMessage
 
 class ProcessCancellationReceiverTest : BaseSpringBootWithCamundaTest() {
     @Autowired

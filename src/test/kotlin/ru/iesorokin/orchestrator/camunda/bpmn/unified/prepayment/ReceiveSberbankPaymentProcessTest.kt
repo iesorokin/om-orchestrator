@@ -1,12 +1,12 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.unified.prepayment
+package ru.iesorokin.orchestrator.camunda.bpmn.unified.prepayment
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Before
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
 import kotlin.test.assertTrue
 
 class ReceiveSberbankPaymentProcessTest : UnifiedPrePaymentCamundaTest() {

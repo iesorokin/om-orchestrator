@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements
+package ru.iesorokin.orchestrator.core.enums.bpmn.elements
 
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.CALL_ACTIVITY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SEND_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SERVICE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.USER_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.CALL_ACTIVITY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.RECEIVE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SEND_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SERVICE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.USER_TASK
 
 enum class PodProcessElement(val code: String, val type: ProcessElementType) {
     CHANGE_TASK_STATUS_TO_APPROVE_IN_PROGRESS("changePaymentTaskStatusToApproveInProgressTask", SERVICE_TASK),

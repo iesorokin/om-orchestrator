@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config
+package ru.iesorokin.orchestrator.config
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest
 import org.springframework.context.annotation.Configuration

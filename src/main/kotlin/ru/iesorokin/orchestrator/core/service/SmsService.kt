@@ -1,12 +1,12 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.domain.InternalSmsRequest
-import ru.iesorokin.payment.orchestrator.core.domain.SolutionCustomer
-import ru.iesorokin.payment.orchestrator.core.enums.CustomerRole
-import ru.iesorokin.payment.orchestrator.core.exception.ErrorSendSmsMessageException
-import ru.iesorokin.payment.orchestrator.output.client.sms.SmsClient
+import ru.iesorokin.orchestrator.core.domain.InternalSmsRequest
+import ru.iesorokin.orchestrator.core.domain.SolutionCustomer
+import ru.iesorokin.orchestrator.core.enums.CustomerRole
+import ru.iesorokin.orchestrator.core.exception.ErrorSendSmsMessageException
+import ru.iesorokin.orchestrator.output.client.sms.SmsClient
 import java.math.BigDecimal
 
 @Service

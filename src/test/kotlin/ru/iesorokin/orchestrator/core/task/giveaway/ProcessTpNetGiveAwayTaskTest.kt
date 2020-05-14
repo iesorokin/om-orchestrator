@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.task.giveaway
+package ru.iesorokin.orchestrator.core.task.giveaway
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -8,7 +8,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.variable.impl.value.PrimitiveTypeValueImpl
 import org.camunda.bpm.engine.variable.value.StringValue
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.service.TpNetService
+import ru.iesorokin.orchestrator.core.service.TpNetService
 
 const val paymentTaskId = "paymentTaskId"
 

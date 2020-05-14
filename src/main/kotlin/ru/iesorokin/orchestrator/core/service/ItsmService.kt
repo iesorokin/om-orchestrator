@@ -1,8 +1,8 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.domain.TpnetItsmTicket
-import ru.iesorokin.payment.orchestrator.output.stream.sender.ItsmSender
+import ru.iesorokin.orchestrator.core.domain.TpnetItsmTicket
+import ru.iesorokin.orchestrator.output.stream.sender.ItsmSender
 
 @Service
 class ItsmService(private val itsmSender: ItsmSender) {

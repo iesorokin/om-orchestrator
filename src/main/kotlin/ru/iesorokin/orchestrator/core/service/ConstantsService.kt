@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 const val REFUND_FOR_PREPAYMENT = "refundForPrepayment"
 const val NOW = "NOW"

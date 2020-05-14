@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.output.client.solution.converter
+package ru.iesorokin.orchestrator.output.client.solution.converter
 
 import org.junit.Test
-import ru.iesorokin.payment.SOLUTION_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponse
+import ru.iesorokin.SOLUTION_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponse
 import kotlin.test.assertEquals
 
 class SolutionConverterTest {

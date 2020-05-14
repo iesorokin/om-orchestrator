@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements
+package ru.iesorokin.orchestrator.core.enums.bpmn.elements
 
 enum class ProcessElementType {
     TASK,

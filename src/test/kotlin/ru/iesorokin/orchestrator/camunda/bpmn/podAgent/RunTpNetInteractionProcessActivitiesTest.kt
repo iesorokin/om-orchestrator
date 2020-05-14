@@ -1,21 +1,21 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.podAgent
+package ru.iesorokin.orchestrator.camunda.bpmn.podAgent
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.After
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.podAgent.base.PodAgentCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.GIVE_AWAY_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE_DEPOSIT
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_DEPOSIT
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.TP_NET_INTERACTION
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.TPNET_DEPOSIT_CALL_ACTIVITY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.TPNET_GIVEAWAY_CALL_ACTIVITY
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.podAgent.base.PodAgentCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.GIVE_AWAY_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE_DEPOSIT
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE_GIVEAWAY
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_DEPOSIT
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_GIVEAWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.TP_NET_INTERACTION
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.TPNET_DEPOSIT_CALL_ACTIVITY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.TPNET_GIVEAWAY_CALL_ACTIVITY
 import kotlin.test.assertEquals
 
 class RunTpNetInteractionProcessActivitiesTest : PodAgentCamundaTest() {

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config.bpmn
+package ru.iesorokin.orchestrator.config.bpmn
 
 
 import org.camunda.bpm.spring.boot.starter.property.CamundaBpmProperties

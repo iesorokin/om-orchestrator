@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.input.stream.receiver
+package ru.iesorokin.orchestrator.input.stream.receiver
 
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
@@ -6,20 +6,20 @@ import org.springframework.cloud.stream.annotation.StreamListener
 import org.springframework.messaging.handler.annotation.Header
 import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.TP_NET_GIVE_AWAY_FAILED_INPUT
-import ru.iesorokin.payment.orchestrator.config.TP_NET_GIVE_AWAY_SUCCESSS_INPUT
-import ru.iesorokin.payment.orchestrator.config.TP_NET_REFUND_COMMAND_FAILED_INPUT
-import ru.iesorokin.payment.orchestrator.config.TP_NET_REFUND_COMMAND_SUCCESS_INPUT
-import ru.iesorokin.payment.orchestrator.config.TP_NET_TRANSACTION_COMMAND_FAILED_INPUT
-import ru.iesorokin.payment.orchestrator.config.TP_NET_TRANSACTION_COMMAND_SUCCESSS_INPUT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.DepositEventType
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.RefundEventType
-import ru.iesorokin.payment.orchestrator.core.service.TpNetService
-import ru.iesorokin.payment.orchestrator.core.service.giveaway.GiveAwayService
-import ru.iesorokin.payment.orchestrator.core.service.refund.RefundTpNetService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.TpNetDepositEventMessage
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.TpNetGiveAwayEventMessage
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.TpNetRefundEventMessage
+import ru.iesorokin.orchestrator.config.TP_NET_GIVE_AWAY_FAILED_INPUT
+import ru.iesorokin.orchestrator.config.TP_NET_GIVE_AWAY_SUCCESSS_INPUT
+import ru.iesorokin.orchestrator.config.TP_NET_REFUND_COMMAND_FAILED_INPUT
+import ru.iesorokin.orchestrator.config.TP_NET_REFUND_COMMAND_SUCCESS_INPUT
+import ru.iesorokin.orchestrator.config.TP_NET_TRANSACTION_COMMAND_FAILED_INPUT
+import ru.iesorokin.orchestrator.config.TP_NET_TRANSACTION_COMMAND_SUCCESSS_INPUT
+import ru.iesorokin.orchestrator.core.enums.bpmn.DepositEventType
+import ru.iesorokin.orchestrator.core.enums.bpmn.RefundEventType
+import ru.iesorokin.orchestrator.core.service.TpNetService
+import ru.iesorokin.orchestrator.core.service.giveaway.GiveAwayService
+import ru.iesorokin.orchestrator.core.service.refund.RefundTpNetService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.TpNetDepositEventMessage
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.TpNetGiveAwayEventMessage
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.TpNetRefundEventMessage
 
 private val log = KotlinLogging.logger {}
 

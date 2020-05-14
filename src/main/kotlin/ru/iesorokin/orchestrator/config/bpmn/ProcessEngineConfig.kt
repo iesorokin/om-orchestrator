@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config.bpmn
+package ru.iesorokin.orchestrator.config.bpmn
 
 import org.camunda.bpm.engine.impl.history.HistoryLevel
 import org.camunda.bpm.engine.impl.history.event.HistoryEventType

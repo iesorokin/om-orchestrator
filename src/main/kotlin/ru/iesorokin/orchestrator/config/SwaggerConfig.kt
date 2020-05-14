@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config
+package ru.iesorokin.orchestrator.config
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

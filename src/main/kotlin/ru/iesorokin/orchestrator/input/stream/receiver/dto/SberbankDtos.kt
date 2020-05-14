@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.input.stream.receiver.dto
+package ru.iesorokin.orchestrator.input.stream.receiver.dto
 
 data class SberbankDepositEventMessage(val orderId: String,
                                        val message: String? = null,

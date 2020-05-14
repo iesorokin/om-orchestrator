@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
@@ -12,11 +12,11 @@ import org.springframework.cloud.stream.test.binder.MessageCollector
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpNetDepositCommandMessage
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpNetGiveAwayCommandMessage
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpNetRefundCommandMessage
-import ru.iesorokin.payment.readPayloadTo
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpNetDepositCommandMessage
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpNetGiveAwayCommandMessage
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpNetRefundCommandMessage
+import ru.iesorokin.readPayloadTo
 import kotlin.test.fail
 
 @RunWith(SpringRunner::class)

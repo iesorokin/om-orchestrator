@@ -1,11 +1,11 @@
-package ru.iesorokin.payment.orchestrator.output.client
+package ru.iesorokin.orchestrator.output.client
 
 import mu.KotlinLogging
 import org.apache.commons.io.IOUtils
 import org.springframework.http.HttpStatus
 import org.springframework.http.client.ClientHttpResponse
 import org.springframework.web.client.ResponseErrorHandler
-import ru.iesorokin.payment.orchestrator.core.enums.ErrorCode
+import ru.iesorokin.orchestrator.core.enums.ErrorCode
 import java.nio.charset.StandardCharsets
 
 private val log = KotlinLogging.logger {}

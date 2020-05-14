@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.input.stream.receiver
+package ru.iesorokin.orchestrator.input.stream.receiver
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
@@ -8,16 +8,16 @@ import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.messaging.support.MessageBuilder
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.DepositEventType
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.RefundEventType
-import ru.iesorokin.payment.orchestrator.core.service.TpNetService
-import ru.iesorokin.payment.orchestrator.core.service.giveaway.GiveAwayService
-import ru.iesorokin.payment.orchestrator.core.service.refund.RefundTpNetService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.TpNetDepositEventMessage
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.TpNetGiveAwayEventMessage
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.TpNetRefundEventMessage
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.enums.bpmn.DepositEventType
+import ru.iesorokin.orchestrator.core.enums.bpmn.RefundEventType
+import ru.iesorokin.orchestrator.core.service.TpNetService
+import ru.iesorokin.orchestrator.core.service.giveaway.GiveAwayService
+import ru.iesorokin.orchestrator.core.service.refund.RefundTpNetService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.TpNetDepositEventMessage
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.TpNetGiveAwayEventMessage
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.TpNetRefundEventMessage
 
 class TpNetEventReceiverTest : BaseSpringBootWithCamundaTest() {
 

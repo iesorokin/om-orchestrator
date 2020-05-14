@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.web.constants
+package ru.iesorokin.orchestrator.web.constants
 
 const val API_VERSION_V1 = "v1"
 const val EDIT_LINE = "/orchestrator/{taskId}/edit-line"

@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements
+package ru.iesorokin.orchestrator.core.enums.bpmn.elements
 
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.EXCLUSIVE_GATEWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SEND_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.TIMER_EVENT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.USER_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.EXCLUSIVE_GATEWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.RECEIVE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SEND_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.TIMER_EVENT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.USER_TASK
 
 enum class TpNetInteractionProcessElement(val code: String, val type: ProcessElementType) {
     PLACE_TP_NET_DEPOSIT("placeTpNetDepositTask", SEND_TASK),

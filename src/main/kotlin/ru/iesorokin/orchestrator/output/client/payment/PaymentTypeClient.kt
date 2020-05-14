@@ -1,9 +1,9 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment
+package ru.iesorokin.orchestrator.output.client.payment
 
 import mu.KotlinLogging
 import org.springframework.http.HttpStatus
 import org.springframework.web.client.RestTemplate
-import ru.iesorokin.payment.orchestrator.core.enums.PaymentTypeEnum
+import ru.iesorokin.orchestrator.core.enums.PaymentTypeEnum
 import java.math.BigDecimal
 
 private val log = KotlinLogging.logger {}

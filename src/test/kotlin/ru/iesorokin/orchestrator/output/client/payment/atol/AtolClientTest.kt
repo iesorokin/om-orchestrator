@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.atol
+package ru.iesorokin.orchestrator.output.client.payment.atol
 
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock.equalToJson
@@ -11,19 +11,19 @@ import org.junit.Rule
 import org.junit.Test
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.zalando.logbook.Logbook
-import ru.iesorokin.payment.ATOL_FILE_PATH
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.SOLUTION_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.getFileAsString
-import ru.iesorokin.payment.orchestrator.config.RestTemplateConfig
-import ru.iesorokin.payment.orchestrator.core.domain.AtolGiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.exception.EmptyAtolResponseException
-import ru.iesorokin.payment.orchestrator.output.client.dto.AtolGiveAwayRegisterRequest
-import ru.iesorokin.payment.orchestrator.output.client.dto.AtolRegisterRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.atol.converter.AtolConverter
+import ru.iesorokin.ATOL_FILE_PATH
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.SOLUTION_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.getFileAsString
+import ru.iesorokin.orchestrator.config.RestTemplateConfig
+import ru.iesorokin.orchestrator.core.domain.AtolGiveAway
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.exception.EmptyAtolResponseException
+import ru.iesorokin.orchestrator.output.client.dto.AtolGiveAwayRegisterRequest
+import ru.iesorokin.orchestrator.output.client.dto.AtolRegisterRequest
+import ru.iesorokin.orchestrator.output.client.payment.atol.converter.AtolConverter
 import kotlin.test.assertEquals
 
 class AtolClientTest {

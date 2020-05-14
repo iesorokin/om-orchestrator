@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.sleuth
+package ru.iesorokin.orchestrator.sleuth
 
 enum class SleuthEnum(val type: String) {
     PROCESS_ID("processId"),

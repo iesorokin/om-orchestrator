@@ -1,13 +1,13 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import mu.KotlinLogging
 import org.springframework.integration.support.MessageBuilder
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.CONDUCT_BUSINESS_PROCESS_OUTPUT
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.output.stream.sender.constants.REFUND_ROUTING_KEY
-import ru.iesorokin.payment.orchestrator.output.stream.sender.constants.ROUTE_TO
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundMessage
+import ru.iesorokin.orchestrator.config.CONDUCT_BUSINESS_PROCESS_OUTPUT
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.output.stream.sender.constants.REFUND_ROUTING_KEY
+import ru.iesorokin.orchestrator.output.stream.sender.constants.ROUTE_TO
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundMessage
 
 private val log = KotlinLogging.logger {}
 

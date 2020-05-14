@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.giveaway
+package ru.iesorokin.orchestrator.camunda.bpmn.giveaway
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.eq
@@ -6,13 +6,13 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_GIVE_AWAY_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXECUTION_STORE
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.REGISTER_ATOL_GIVE_AWAY_TASK
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_GIVE_AWAY_ID
+import ru.iesorokin.orchestrator.core.constants.process.EXECUTION_STORE
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.REGISTER_ATOL_GIVE_AWAY_TASK
 
 class RegisterAtolGiveAwayTaskTest : GiveAwayCamundaTest() {
 

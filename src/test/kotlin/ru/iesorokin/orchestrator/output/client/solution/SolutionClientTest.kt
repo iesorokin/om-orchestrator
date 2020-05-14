@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.solution
+package ru.iesorokin.orchestrator.output.client.solution
 
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration
@@ -10,14 +10,14 @@ import org.junit.Rule
 import org.junit.Test
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.zalando.logbook.Logbook
-import ru.iesorokin.payment.SOLUTION_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.getFileAsString
-import ru.iesorokin.payment.orchestrator.config.RestTemplateConfig
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.exception.SolutionNotFoundException
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponse
-import ru.iesorokin.payment.orchestrator.output.client.solution.converter.SolutionConverter
+import ru.iesorokin.SOLUTION_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.getFileAsString
+import ru.iesorokin.orchestrator.config.RestTemplateConfig
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.exception.SolutionNotFoundException
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponse
+import ru.iesorokin.orchestrator.output.client.solution.converter.SolutionConverter
 import kotlin.test.assertEquals
 
 class SolutionClientTest {

@@ -1,13 +1,13 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.enums.CustomerRole
-import ru.iesorokin.payment.orchestrator.core.enums.FiscalizationStatus
-import ru.iesorokin.payment.orchestrator.core.exception.ErrorSendSmsMessageException
-import ru.iesorokin.payment.orchestrator.output.client.solution.SolutionClient
-import ru.iesorokin.payment.orchestrator.output.stream.sender.FiscalizationStatusSender
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.enums.CustomerRole
+import ru.iesorokin.orchestrator.core.enums.FiscalizationStatus
+import ru.iesorokin.orchestrator.core.exception.ErrorSendSmsMessageException
+import ru.iesorokin.orchestrator.output.client.solution.SolutionClient
+import ru.iesorokin.orchestrator.output.stream.sender.FiscalizationStatusSender
 
 private val log = KotlinLogging.logger {}
 

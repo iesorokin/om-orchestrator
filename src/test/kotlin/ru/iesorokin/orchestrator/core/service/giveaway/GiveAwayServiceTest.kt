@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.giveaway
+package ru.iesorokin.orchestrator.core.service.giveaway
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -7,15 +7,15 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAwayExternalLine
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_FAIL
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.PAYMENT_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.TP_NET_INTERACTION
-import ru.iesorokin.payment.orchestrator.core.exception.GiveAwaysNotFoundException
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.core.domain.GiveAway
+import ru.iesorokin.orchestrator.core.domain.GiveAwayExternalLine
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_FAIL
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.PAYMENT_GIVEAWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.TP_NET_INTERACTION
+import ru.iesorokin.orchestrator.core.exception.GiveAwaysNotFoundException
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
 import java.math.BigDecimal
 import java.time.LocalDateTime
 

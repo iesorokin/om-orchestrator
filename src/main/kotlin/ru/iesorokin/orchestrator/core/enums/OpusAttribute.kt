@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.enums
+package ru.iesorokin.orchestrator.core.enums
 
 enum class OpusAttribute(val attribute: String) {
     DISPLAYED_NAME("12963"),

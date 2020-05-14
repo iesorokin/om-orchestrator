@@ -1,11 +1,11 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import org.springframework.stereotype.Service
 import ru.iesorokin.opus.client.artmag.ArtmagOpusClient
 import ru.iesorokin.opus.client.product.ProductOpusClient
 import ru.iesorokin.opus.client.product.dto.ProductAttribute
-import ru.iesorokin.payment.orchestrator.core.enums.Language
-import ru.iesorokin.payment.orchestrator.core.enums.OpusAttribute
+import ru.iesorokin.orchestrator.core.enums.Language
+import ru.iesorokin.orchestrator.core.enums.OpusAttribute
 import java.math.BigDecimal
 
 private const val VERSION_2 = "v2"

@@ -1,18 +1,18 @@
-package ru.iesorokin.payment.orchestrator.core.service.prepayment
+package ru.iesorokin.orchestrator.core.service.prepayment
 
 import org.camunda.bpm.engine.ProcessEngineException
 import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.SBERBANK_PREPAYMENT_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BoundaryEventType
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.PaymentTransactionMessage
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.constants.process.SBERBANK_PREPAYMENT_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.BoundaryEventType
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.PaymentTransactionMessage
 import kotlin.test.fail
 
 class PaymentTransactionServiceTest : BaseSpringBootWithCamundaTest() {

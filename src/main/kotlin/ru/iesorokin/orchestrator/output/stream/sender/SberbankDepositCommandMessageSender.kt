@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import mu.KotlinLogging
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.SberbankDepositCommandMessage
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.output.stream.sender.dto.SberbankDepositCommandMessage
 import java.math.BigDecimal
 
 private val log = KotlinLogging.logger {}

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.sleuth
+package ru.iesorokin.orchestrator.sleuth
 
 import java.lang.annotation.Inherited
 

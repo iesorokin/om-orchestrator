@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.input.stream.receiver
+package ru.iesorokin.orchestrator.input.stream.receiver
 
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyZeroInteractions
@@ -11,16 +11,16 @@ import org.junit.rules.ExpectedException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.integration.support.MessageBuilder
-import ru.iesorokin.payment.ATOL_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.getFileAsString
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.SBERBANK_PREPAYMENT_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_ATOL_SUCCESS_RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.core.service.prepayment.AtolTransactionMessageService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
+import ru.iesorokin.ATOL_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.getFileAsString
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_ID
+import ru.iesorokin.orchestrator.core.constants.process.SBERBANK_PREPAYMENT_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_ATOL_SUCCESS_RECEIVE_TASK
+import ru.iesorokin.orchestrator.core.service.prepayment.AtolTransactionMessageService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
 
 class AtolTransactionMessageReceiverTest : BaseSpringBootWithCamundaTest() {
 

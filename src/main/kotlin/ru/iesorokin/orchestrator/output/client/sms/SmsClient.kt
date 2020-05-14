@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.sms
+package ru.iesorokin.orchestrator.output.client.sms
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cloud.context.config.annotation.RefreshScope
@@ -6,7 +6,7 @@ import org.springframework.retry.annotation.Backoff
 import org.springframework.retry.annotation.Retryable
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
-import ru.iesorokin.payment.orchestrator.core.domain.InternalSmsRequest
+import ru.iesorokin.orchestrator.core.domain.InternalSmsRequest
 
 @Component
 @RefreshScope

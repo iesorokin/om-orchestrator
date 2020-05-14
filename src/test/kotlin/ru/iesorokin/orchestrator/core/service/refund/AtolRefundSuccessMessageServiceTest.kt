@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.refund
+package ru.iesorokin.orchestrator.core.service.refund
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doNothing
@@ -8,18 +8,18 @@ import org.junit.Test
 import org.junit.rules.ExpectedException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
-import ru.iesorokin.payment.ATOL_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REFUND_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement.*
-import ru.iesorokin.payment.orchestrator.core.task.refund.RefundTpNetTask
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
+import ru.iesorokin.ATOL_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REFUND_ID
+import ru.iesorokin.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement.*
+import ru.iesorokin.orchestrator.core.task.refund.RefundTpNetTask
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
 
 class AtolRefundSuccessMessageServiceTest : BaseSpringBootWithCamundaTest() {
     @Autowired

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.sberbank
+package ru.iesorokin.orchestrator.output.client.payment.sberbank
 
 import com.github.tomakehurst.wiremock.client.WireMock.equalToJson
 import com.github.tomakehurst.wiremock.client.WireMock.ok
@@ -14,9 +14,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.zalando.logbook.Logbook
-import ru.iesorokin.payment.orchestrator.config.RestTemplateConfig
-import ru.iesorokin.payment.orchestrator.core.constants.process.PERSON
-import ru.iesorokin.payment.orchestrator.output.client.payment.SberbankClient
+import ru.iesorokin.orchestrator.config.RestTemplateConfig
+import ru.iesorokin.orchestrator.core.constants.process.PERSON
+import ru.iesorokin.orchestrator.output.client.payment.SberbankClient
 import kotlin.test.assertTrue
 
 private const val DELIVERY_MODE_COURIER = "COURIER"

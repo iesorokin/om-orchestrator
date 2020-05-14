@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda
+package ru.iesorokin.orchestrator.camunda
 
 import org.assertj.core.api.Assertions
 import org.camunda.bpm.engine.runtime.ProcessInstance
@@ -15,9 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
-import ru.iesorokin.payment.bpmn.test.config.ProcessEngineRuleConfiguration
-import ru.iesorokin.payment.orchestrator.bpmn.test.CamundaCoverageSpringJUnit4ClassRunner
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
+import ru.iesorokin.bpmn.test.config.ProcessEngineRuleConfiguration
+import ru.iesorokin.orchestrator.bpmn.test.CamundaCoverageSpringJUnit4ClassRunner
+import ru.iesorokin.orchestrator.core.service.CamundaService
 
 @RunWith(CamundaCoverageSpringJUnit4ClassRunner::class)
 @ActiveProfiles("test")

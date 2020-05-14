@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import org.assertj.core.api.Assertions
 import org.junit.Test
@@ -9,9 +9,9 @@ import org.springframework.cloud.stream.test.binder.MessageCollector
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.SberbankDepositCommandMessage
-import ru.iesorokin.payment.readPayloadTo
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.output.stream.sender.dto.SberbankDepositCommandMessage
+import ru.iesorokin.readPayloadTo
 
 @RunWith(SpringRunner::class)
 @ActiveProfiles("test")

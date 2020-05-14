@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.bpmn.test
+package ru.iesorokin.orchestrator.bpmn.test
 
 import org.camunda.bpm.engine.test.ProcessEngineRule
 import org.junit.ClassRule

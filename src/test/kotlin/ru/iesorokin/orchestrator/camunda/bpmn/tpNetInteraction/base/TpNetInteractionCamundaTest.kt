@@ -1,22 +1,22 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction.base
+package ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction.base
 
 import org.camunda.bpm.engine.test.Deployment
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.runner.RunWith
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ContextConfiguration
-import ru.iesorokin.payment.bpmn.test.config.ProcessEngineTestCoverageRuleConfiguration
-import ru.iesorokin.payment.orchestrator.bpmn.test.CamundaCoverageSpringJUnit4ClassRunner
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.BaseCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement
-import ru.iesorokin.payment.orchestrator.core.service.ItsmService
-import ru.iesorokin.payment.orchestrator.core.service.TpNetService
-import ru.iesorokin.payment.orchestrator.core.task.giveaway.ProcessTpNetGiveAwayTask
-import ru.iesorokin.payment.orchestrator.core.task.prepayment.CreateTpnetItsmTicketTask
-import ru.iesorokin.payment.orchestrator.core.task.prepayment.PlaceTpNetDepositTask
+import ru.iesorokin.bpmn.test.config.ProcessEngineTestCoverageRuleConfiguration
+import ru.iesorokin.orchestrator.bpmn.test.CamundaCoverageSpringJUnit4ClassRunner
+import ru.iesorokin.orchestrator.camunda.bpmn.BaseCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement
+import ru.iesorokin.orchestrator.core.service.ItsmService
+import ru.iesorokin.orchestrator.core.service.TpNetService
+import ru.iesorokin.orchestrator.core.task.giveaway.ProcessTpNetGiveAwayTask
+import ru.iesorokin.orchestrator.core.task.prepayment.CreateTpnetItsmTicketTask
+import ru.iesorokin.orchestrator.core.task.prepayment.PlaceTpNetDepositTask
 
 @RunWith(CamundaCoverageSpringJUnit4ClassRunner::class)
 @Deployment(resources = ["bpmn/common/tp_net_interaction.bpmn"])

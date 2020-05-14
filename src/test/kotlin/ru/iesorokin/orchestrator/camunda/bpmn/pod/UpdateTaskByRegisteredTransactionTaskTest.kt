@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod
+package ru.iesorokin.orchestrator.camunda.bpmn.pod
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
@@ -7,18 +7,18 @@ import org.camunda.bpm.engine.test.assertions.ProcessEngineTests.assertThat
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Assert.assertNotNull
 import org.junit.Test
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskRegisterStatus
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskRegisterStatusLine
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.POD_PAYMENT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.RECEIVE_ATOL_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.UPDATE_TASK_BY_REGISTERED_TRANSACTION_TASK
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskRegisterStatus
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskRegisterStatusLine
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.POD_PAYMENT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.RECEIVE_ATOL_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.UPDATE_TASK_BY_REGISTERED_TRANSACTION_TASK
 
 class UpdateTaskByRegisteredTransactionTaskTest : PodCamundaTest() {
 

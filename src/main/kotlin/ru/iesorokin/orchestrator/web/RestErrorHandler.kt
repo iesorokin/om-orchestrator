@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.web
+package ru.iesorokin.orchestrator.web
 
 import mu.KotlinLogging
 import org.springframework.http.HttpStatus
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
-import ru.iesorokin.payment.orchestrator.core.enums.ErrorCode
-import ru.iesorokin.payment.orchestrator.core.exception.InvalidLineTypeException
-import ru.iesorokin.payment.orchestrator.core.exception.InvalidTaskStatusException
-import ru.iesorokin.payment.orchestrator.core.exception.InvalidUnitAmountIncludingVatException
-import ru.iesorokin.payment.orchestrator.core.exception.LineNotFoundException
-import ru.iesorokin.payment.orchestrator.core.exception.PaymentClientException
-import ru.iesorokin.payment.orchestrator.core.exception.PaymentTaskNotFoundException
-import ru.iesorokin.payment.orchestrator.core.exception.StartProcessException
+import ru.iesorokin.orchestrator.core.enums.ErrorCode
+import ru.iesorokin.orchestrator.core.exception.InvalidLineTypeException
+import ru.iesorokin.orchestrator.core.exception.InvalidTaskStatusException
+import ru.iesorokin.orchestrator.core.exception.InvalidUnitAmountIncludingVatException
+import ru.iesorokin.orchestrator.core.exception.LineNotFoundException
+import ru.iesorokin.orchestrator.core.exception.PaymentClientException
+import ru.iesorokin.orchestrator.core.exception.PaymentTaskNotFoundException
+import ru.iesorokin.orchestrator.core.exception.StartProcessException
 
 private val log = KotlinLogging.logger { }
 

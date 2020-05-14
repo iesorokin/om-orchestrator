@@ -1,16 +1,16 @@
-package ru.iesorokin.payment.orchestrator.core.service.refund
+package ru.iesorokin.orchestrator.core.service.refund
 
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.domain.RefundContext
-import ru.iesorokin.payment.orchestrator.core.domain.RefundLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.JsonPatchRequestOperation
-import ru.iesorokin.payment.orchestrator.output.client.dto.OperationType
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.converter.PATCH_PATH_REFUND_STATUS_LIST
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.converter.PAYMENT_STATUS_APPROVE_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.converter.RefundDtosConverter
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.PatchRefundLine
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.PatchRefundRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.RefundStatus
+import ru.iesorokin.orchestrator.core.domain.RefundContext
+import ru.iesorokin.orchestrator.core.domain.RefundLine
+import ru.iesorokin.orchestrator.output.client.dto.JsonPatchRequestOperation
+import ru.iesorokin.orchestrator.output.client.dto.OperationType
+import ru.iesorokin.orchestrator.output.client.payment.task.converter.PATCH_PATH_REFUND_STATUS_LIST
+import ru.iesorokin.orchestrator.output.client.payment.task.converter.PAYMENT_STATUS_APPROVE_IN_PROGRESS
+import ru.iesorokin.orchestrator.output.client.payment.task.converter.RefundDtosConverter
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.PatchRefundLine
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.PatchRefundRequest
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.RefundStatus
 import java.math.BigDecimal
 import kotlin.test.assertEquals
 

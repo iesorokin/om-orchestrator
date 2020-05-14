@@ -1,11 +1,11 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import com.nhaarman.mockito_kotlin.doNothing
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.domain.TpnetItsmTicket
-import ru.iesorokin.payment.orchestrator.output.stream.sender.ItsmSender
+import ru.iesorokin.orchestrator.core.domain.TpnetItsmTicket
+import ru.iesorokin.orchestrator.output.stream.sender.ItsmSender
 
 class ItsmServiceTest {
     private val itsmSender = mock<ItsmSender>()

@@ -1,6 +1,6 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements
+package ru.iesorokin.orchestrator.core.enums.bpmn.elements
 
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.*
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.*
 
 enum class RefundProcessElement(val code: String, val type: ProcessElementType) {
     REGISTER_REFUND_ATOL_TRANSACTION_TASK("registerRefundAtolTransactionServiceTask", SERVICE_TASK),

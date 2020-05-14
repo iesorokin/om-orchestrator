@@ -1,7 +1,7 @@
-package ru.iesorokin.payment.orchestrator.output.client.dto
+package ru.iesorokin.orchestrator.output.client.dto
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import ru.iesorokin.payment.orchestrator.core.domain.LOCAL_DATE_TIME_PATTERN
+import ru.iesorokin.orchestrator.core.domain.LOCAL_DATE_TIME_PATTERN
 import java.math.BigDecimal
 import java.time.LocalDateTime
 

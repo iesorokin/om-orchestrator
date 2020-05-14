@@ -1,12 +1,12 @@
-package ru.iesorokin.payment.orchestrator.core.task.giveaway
+package ru.iesorokin.orchestrator.core.task.giveaway
 
 import mu.KotlinLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.service.TpNetService
-import ru.iesorokin.payment.orchestrator.core.task.variable
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.service.TpNetService
+import ru.iesorokin.orchestrator.core.task.variable
 
 private val log = KotlinLogging.logger {}
 

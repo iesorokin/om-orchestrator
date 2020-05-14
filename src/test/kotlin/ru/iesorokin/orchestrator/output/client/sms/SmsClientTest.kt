@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.sms
+package ru.iesorokin.orchestrator.output.client.sms
 
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock.equalTo
@@ -16,12 +16,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.http.HttpHeaders.ACCEPT
 import org.springframework.web.client.RestTemplate
 import org.zalando.logbook.Logbook
-import ru.iesorokin.payment.orchestrator.config.LEAD_APPLICATION
-import ru.iesorokin.payment.orchestrator.config.RestTemplateConfig
-import ru.iesorokin.payment.orchestrator.core.domain.InternalSmsRequest
-import ru.iesorokin.payment.orchestrator.core.service.NOW
-import ru.iesorokin.payment.orchestrator.core.service.REFUND_AMOUNT
-import ru.iesorokin.payment.orchestrator.core.service.SOLUTION_ID
+import ru.iesorokin.orchestrator.config.LEAD_APPLICATION
+import ru.iesorokin.orchestrator.config.RestTemplateConfig
+import ru.iesorokin.orchestrator.core.domain.InternalSmsRequest
+import ru.iesorokin.orchestrator.core.service.NOW
+import ru.iesorokin.orchestrator.core.service.REFUND_AMOUNT
+import ru.iesorokin.orchestrator.core.service.SOLUTION_ID
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 

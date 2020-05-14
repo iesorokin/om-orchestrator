@@ -1,17 +1,17 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.refund
+package ru.iesorokin.orchestrator.camunda.bpmn.refund
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Test
-import ru.iesorokin.payment.ATOL_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REFUND_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement.RECEIVE_ATOL_REFUND_SUCCESS_RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
+import ru.iesorokin.ATOL_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REFUND_ID
+import ru.iesorokin.orchestrator.core.constants.process.CURRENT_PAYMENT_STATUS
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement.RECEIVE_ATOL_REFUND_SUCCESS_RECEIVE_TASK
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
 import kotlin.test.assertTrue
 
 class AtolRefundSuccessMessageTest : RefundCamundaTest() {

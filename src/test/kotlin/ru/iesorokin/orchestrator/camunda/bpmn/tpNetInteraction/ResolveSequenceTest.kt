@@ -1,15 +1,15 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction
+package ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction.base.TpNetInteractionCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_DEPOSIT
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.PLACE_TP_NET_DEPOSIT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.PLACE_TP_NET_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RESOLVE_SEQUENCE
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction.base.TpNetInteractionCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_DEPOSIT
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.TP_NET_TYPE_GIVEAWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.PLACE_TP_NET_DEPOSIT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.PLACE_TP_NET_GIVEAWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RESOLVE_SEQUENCE
 
 class ResolveSequenceTest : TpNetInteractionCamundaTest() {
 

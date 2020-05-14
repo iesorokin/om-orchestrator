@@ -1,12 +1,12 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.giveaway
+package ru.iesorokin.orchestrator.camunda.bpmn.giveaway
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
 
 class ProcessTpNetGiveAwayTaskTest : GiveAwayCamundaTest() {
 

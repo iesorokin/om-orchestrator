@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment
+package ru.iesorokin.orchestrator.output.client.payment
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
-import ru.iesorokin.payment.orchestrator.core.enums.PaymentTypeEnum
-import ru.iesorokin.payment.orchestrator.output.client.dto.SberbankRefundRequest
+import ru.iesorokin.orchestrator.core.enums.PaymentTypeEnum
+import ru.iesorokin.orchestrator.output.client.dto.SberbankRefundRequest
 import java.math.BigDecimal
 
 /**

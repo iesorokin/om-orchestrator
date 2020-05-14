@@ -1,12 +1,12 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import mu.KotlinLogging
 import org.springframework.integration.support.MessageBuilder
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.FISCALIZATION_STATUS_OUTPUT
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.enums.FiscalizationStatus
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.FiscalizationStatusMessage
+import ru.iesorokin.orchestrator.config.FISCALIZATION_STATUS_OUTPUT
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.enums.FiscalizationStatus
+import ru.iesorokin.orchestrator.output.stream.sender.dto.FiscalizationStatusMessage
 
 private val log = KotlinLogging.logger {}
 

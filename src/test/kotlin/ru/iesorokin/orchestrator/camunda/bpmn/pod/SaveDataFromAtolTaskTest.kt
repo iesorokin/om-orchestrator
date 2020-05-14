@@ -1,21 +1,21 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod
+package ru.iesorokin.orchestrator.camunda.bpmn.pod
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Before
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_DOCUMENT_NUMBER
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_REGISTRATION_NUMBER
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_STATUS
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_STORAGE_NUMBER
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_UUID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskRegisterStatus
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.SAVE_DATA_FROM_ATOL
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_DOCUMENT_NUMBER
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_ID
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_REGISTRATION_NUMBER
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_STATUS
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_STORAGE_NUMBER
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_UUID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskRegisterStatus
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.SAVE_DATA_FROM_ATOL
 import kotlin.test.assertNull
 
 class SaveDataFromAtolTaskTest : PodCamundaTest() {

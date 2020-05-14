@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod
+package ru.iesorokin.orchestrator.camunda.bpmn.pod
 
 import com.nhaarman.mockito_kotlin.doNothing
 import com.nhaarman.mockito_kotlin.verify
@@ -6,14 +6,14 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
 import org.mockito.Mockito.times
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
-import ru.iesorokin.payment.orchestrator.core.enums.FiscalizationStatus
-import ru.iesorokin.payment.orchestrator.core.enums.FiscalizationStatus.FISCALIZATION_FINISHED
-import ru.iesorokin.payment.orchestrator.core.enums.FiscalizationStatus.FISCALIZATION_STARTED
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.SEND_FINISHED_FISCALIZATION_STATUS_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.SEND_STARTED_FISCALIZATION_STATUS_TASK
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
+import ru.iesorokin.orchestrator.core.enums.FiscalizationStatus
+import ru.iesorokin.orchestrator.core.enums.FiscalizationStatus.FISCALIZATION_FINISHED
+import ru.iesorokin.orchestrator.core.enums.FiscalizationStatus.FISCALIZATION_STARTED
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.SEND_FINISHED_FISCALIZATION_STATUS_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.SEND_STARTED_FISCALIZATION_STATUS_TASK
 
 class SendFiscalizationStatusTaskTest : PodCamundaTest() {
 

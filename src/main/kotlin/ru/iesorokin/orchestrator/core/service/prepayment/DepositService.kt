@@ -1,14 +1,14 @@
-package ru.iesorokin.payment.orchestrator.core.service.prepayment
+package ru.iesorokin.orchestrator.core.service.prepayment
 
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskLine
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.DepositEventType
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.output.stream.sender.SberbankDepositCommandMessageSender
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskLine
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent
+import ru.iesorokin.orchestrator.core.enums.bpmn.DepositEventType
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.output.stream.sender.SberbankDepositCommandMessageSender
 import java.math.BigDecimal
 import java.math.RoundingMode
 

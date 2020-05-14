@@ -1,13 +1,13 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod
+package ru.iesorokin.orchestrator.camunda.bpmn.pod
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Before
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.ATOL_REGISTER_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.RECEIVE_ATOL_SUCCESS
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.ATOL_REGISTER_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.RECEIVE_ATOL_SUCCESS
 import kotlin.test.assertTrue
 
 class ReceiveAtolSuccessTaskTest : PodCamundaTest() {

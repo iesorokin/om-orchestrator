@@ -1,12 +1,12 @@
-package ru.iesorokin.payment.orchestrator.core.task
+package ru.iesorokin.orchestrator.core.task
 
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.variable.value.IntegerValue
 import org.camunda.bpm.engine.variable.value.LongValue
 import org.camunda.bpm.engine.variable.value.StringValue
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BpmnErrors
-import ru.iesorokin.payment.orchestrator.core.exception.CamundaProcessNotCorrectStateException
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.BpmnErrors
+import ru.iesorokin.orchestrator.core.exception.CamundaProcessNotCorrectStateException
 
 internal fun DelegateExecution.variable(variableName: String,
                                         errorMsg: (() -> String)? = null) =

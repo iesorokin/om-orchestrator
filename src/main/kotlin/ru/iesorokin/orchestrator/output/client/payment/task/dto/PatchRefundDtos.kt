@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.dto
+package ru.iesorokin.orchestrator.output.client.payment.task.dto
 
 import java.math.BigDecimal
 

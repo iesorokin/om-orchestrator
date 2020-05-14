@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -7,17 +7,17 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.core.domain.InternalSmsRequest
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.Phone
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.domain.SolutionCustomer
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.PaymentTaskClient
-import ru.iesorokin.payment.orchestrator.output.client.sms.SmsClient
-import ru.iesorokin.payment.orchestrator.output.client.solution.SolutionClient
-import ru.iesorokin.payment.orchestrator.output.stream.sender.FiscalizationStatusSender
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.core.domain.InternalSmsRequest
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.Phone
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.domain.SolutionCustomer
+import ru.iesorokin.orchestrator.output.client.payment.task.PaymentTaskClient
+import ru.iesorokin.orchestrator.output.client.sms.SmsClient
+import ru.iesorokin.orchestrator.output.client.solution.SolutionClient
+import ru.iesorokin.orchestrator.output.stream.sender.FiscalizationStatusSender
 
 class SmsServiceTest {
     private val solutionClient = mock<SolutionClient>()

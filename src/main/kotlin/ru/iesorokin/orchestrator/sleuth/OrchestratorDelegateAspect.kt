@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.sleuth
+package ru.iesorokin.orchestrator.sleuth
 
 import mu.KotlinLogging
 import org.aspectj.lang.JoinPoint
@@ -6,10 +6,10 @@ import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Before
 import org.aspectj.lang.annotation.Pointcut
 import org.camunda.bpm.engine.delegate.DelegateExecution
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.task.variable
-import ru.iesorokin.payment.orchestrator.sleuth.SleuthEnum.PROCESS_ID
-import ru.iesorokin.payment.orchestrator.sleuth.SleuthEnum.SOLUTION_ID
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.task.variable
+import ru.iesorokin.orchestrator.sleuth.SleuthEnum.PROCESS_ID
+import ru.iesorokin.orchestrator.sleuth.SleuthEnum.SOLUTION_ID
 import ru.iesorokin.utility.sleuthbase.MdcService
 
 /**
@@ -28,7 +28,7 @@ private val log = KotlinLogging.logger {}
 @Aspect
 open class OrchestratorDelegateAspect(private val mdcService: MdcService) {
 
-    @Pointcut(value = "execution(public * ru.iesorokin.payment..*(..))")
+    @Pointcut(value = "execution(public * ru.iesorokin..*(..))")
     fun anyLmPaymentPublicMethod() {
     }
 

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender.dto
+package ru.iesorokin.orchestrator.output.stream.sender.dto
 
 
 data class TpNetRefundCommandMessage(val paymentTaskId: String,

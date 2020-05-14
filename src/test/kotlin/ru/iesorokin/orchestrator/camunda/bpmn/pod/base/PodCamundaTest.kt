@@ -1,29 +1,29 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base
+package ru.iesorokin.orchestrator.camunda.bpmn.pod.base
 
 import org.camunda.bpm.engine.test.Deployment
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.runner.RunWith
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ContextConfiguration
-import ru.iesorokin.payment.bpmn.test.config.ProcessEngineTestCoverageRuleConfiguration
-import ru.iesorokin.payment.orchestrator.bpmn.test.CamundaCoverageSpringJUnit4ClassRunner
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.BaseCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement
-import ru.iesorokin.payment.orchestrator.core.service.AtolService
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.core.service.SolutionService
-import ru.iesorokin.payment.orchestrator.core.service.TpNetService
-import ru.iesorokin.payment.orchestrator.core.task.common.ChangePaymentTaskStatusTask
-import ru.iesorokin.payment.orchestrator.core.task.common.RegisterAtolTransactionTask
-import ru.iesorokin.payment.orchestrator.core.task.common.RegisterTransactionInAtolTask
-import ru.iesorokin.payment.orchestrator.core.task.common.SaveDataFromAtolTask
-import ru.iesorokin.payment.orchestrator.core.task.common.UpdateTaskByRegisteredTransactionTask
-import ru.iesorokin.payment.orchestrator.core.task.pod.CreatePaymentGiveAwayTask
-import ru.iesorokin.payment.orchestrator.core.task.pod.SendFiscalizationStatusTask
-import ru.iesorokin.payment.orchestrator.core.task.prepayment.PlaceTpNetDepositTask
+import ru.iesorokin.bpmn.test.config.ProcessEngineTestCoverageRuleConfiguration
+import ru.iesorokin.orchestrator.bpmn.test.CamundaCoverageSpringJUnit4ClassRunner
+import ru.iesorokin.orchestrator.camunda.bpmn.BaseCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement
+import ru.iesorokin.orchestrator.core.service.AtolService
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.core.service.SolutionService
+import ru.iesorokin.orchestrator.core.service.TpNetService
+import ru.iesorokin.orchestrator.core.task.common.ChangePaymentTaskStatusTask
+import ru.iesorokin.orchestrator.core.task.common.RegisterAtolTransactionTask
+import ru.iesorokin.orchestrator.core.task.common.RegisterTransactionInAtolTask
+import ru.iesorokin.orchestrator.core.task.common.SaveDataFromAtolTask
+import ru.iesorokin.orchestrator.core.task.common.UpdateTaskByRegisteredTransactionTask
+import ru.iesorokin.orchestrator.core.task.pod.CreatePaymentGiveAwayTask
+import ru.iesorokin.orchestrator.core.task.pod.SendFiscalizationStatusTask
+import ru.iesorokin.orchestrator.core.task.prepayment.PlaceTpNetDepositTask
 
 @RunWith(CamundaCoverageSpringJUnit4ClassRunner::class)
 @Deployment(resources = ["bpmn/pod_payment.bpmn", "bpmn/give_away.bpmn"])

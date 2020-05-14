@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.client
+package ru.iesorokin.orchestrator.output.client.payment.client
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
@@ -6,8 +6,8 @@ import org.junit.Test
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
-import ru.iesorokin.payment.orchestrator.core.enums.PaymentTypeEnum
-import ru.iesorokin.payment.orchestrator.output.client.payment.PaymentTypeClient
+import ru.iesorokin.orchestrator.core.enums.PaymentTypeEnum
+import ru.iesorokin.orchestrator.output.client.payment.PaymentTypeClient
 import java.math.BigDecimal
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

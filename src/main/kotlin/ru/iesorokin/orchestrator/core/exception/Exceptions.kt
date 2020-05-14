@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.exception
+package ru.iesorokin.orchestrator.core.exception
 
 class CamundaProcessNotCorrectStateException(override val message: String) : RuntimeException()
 

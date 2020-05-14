@@ -1,7 +1,7 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements
+package ru.iesorokin.orchestrator.core.enums.bpmn.elements
 
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.CALL_ACTIVITY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SERVICE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.CALL_ACTIVITY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SERVICE_TASK
 
 enum class PodAgentProcessElement(val code: String, val type: ProcessElementType) {
     CHANGE_TASK_STATUS_TO_DEPOSIT_IN_PROGRESS_TASK("changeTaskStatusToDepositInProgressTask", SERVICE_TASK),

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.web.dto
+package ru.iesorokin.orchestrator.web.dto
 
 import java.math.BigDecimal
 import javax.validation.Valid

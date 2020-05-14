@@ -1,21 +1,21 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction
+package ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction.base.TpNetInteractionCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE
-import ru.iesorokin.payment.orchestrator.core.domain.TpnetItsmTicket
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.CREATE_ITSM_TICKET_DEPOSIT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.CREATE_ITSM_TICKET_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_DEPOSIT_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_GIVEAWAY_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECIEVE_TP_NET_SUCCESS_DEPOSIT_TIMER
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECIEVE_TP_NET_SUCCESS_GIVEAWAY_TIMER
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction.base.TpNetInteractionCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction.INCIDENT_TYPE
+import ru.iesorokin.orchestrator.core.domain.TpnetItsmTicket
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.CREATE_ITSM_TICKET_DEPOSIT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.CREATE_ITSM_TICKET_GIVEAWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_DEPOSIT_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_GIVEAWAY_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECIEVE_TP_NET_SUCCESS_DEPOSIT_TIMER
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECIEVE_TP_NET_SUCCESS_GIVEAWAY_TIMER
 
 
 class CreateTpNetItsmTicketTasksTest : TpNetInteractionCamundaTest() {

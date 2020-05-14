@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.prepayment
+package ru.iesorokin.orchestrator.core.service.prepayment
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -10,9 +10,9 @@ import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.camunda.bpm.extension.mockito.QueryMocks
 import org.junit.Before
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.PaymentTransactionMessage
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.PaymentTransactionMessage
 import ru.iesorokin.utility.sleuthbase.MdcService
 
 class PaymentTransactionServiceErrorTest {

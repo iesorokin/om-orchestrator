@@ -1,15 +1,15 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import mu.KotlinLogging
 import org.springframework.integration.support.MessageBuilder
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.config.PROCESS_TPNET_REFUND_COMMAND_OUTPUT
-import ru.iesorokin.payment.orchestrator.config.PROCESS_TPNET_TRANSACTION_COMMAND_OUTPUT
-import ru.iesorokin.payment.orchestrator.config.PROCESS_TP_NET_GIVE_AWAY_COMMAND_OUTPUT
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpNetDepositCommandMessage
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpNetGiveAwayCommandMessage
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpNetRefundCommandMessage
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.config.PROCESS_TPNET_REFUND_COMMAND_OUTPUT
+import ru.iesorokin.orchestrator.config.PROCESS_TPNET_TRANSACTION_COMMAND_OUTPUT
+import ru.iesorokin.orchestrator.config.PROCESS_TP_NET_GIVE_AWAY_COMMAND_OUTPUT
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpNetDepositCommandMessage
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpNetGiveAwayCommandMessage
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpNetRefundCommandMessage
 
 private val log = KotlinLogging.logger {}
 

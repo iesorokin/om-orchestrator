@@ -1,16 +1,16 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.prepayment
+package ru.iesorokin.orchestrator.camunda.bpmn.prepayment
 
 import com.nhaarman.mockito_kotlin.verify
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Before
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.prepayment.base.PrepaymentCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.TP_NET_OPERATION_TYPE
-import ru.iesorokin.payment.orchestrator.core.domain.TpnetItsmTicket
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.camunda.bpmn.prepayment.base.PrepaymentCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.constants.process.TP_NET_OPERATION_TYPE
+import ru.iesorokin.orchestrator.core.domain.TpnetItsmTicket
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
 
 
 class CreateTpnetItsmTicketTaskTest : PrepaymentCamundaTest() {

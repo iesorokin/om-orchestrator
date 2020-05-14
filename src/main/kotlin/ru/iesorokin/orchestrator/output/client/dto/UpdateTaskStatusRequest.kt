@@ -1,6 +1,6 @@
-package ru.iesorokin.payment.orchestrator.output.client.dto
+package ru.iesorokin.orchestrator.output.client.dto
 
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
 
 data class UpdateTaskStatusRequest(
         val updatedBy: String,

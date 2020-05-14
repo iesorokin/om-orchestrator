@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import java.math.BigDecimal
 import java.math.RoundingMode

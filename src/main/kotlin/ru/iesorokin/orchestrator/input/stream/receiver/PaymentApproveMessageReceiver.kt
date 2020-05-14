@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.input.stream.receiver
+package ru.iesorokin.orchestrator.input.stream.receiver
 
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
@@ -6,10 +6,10 @@ import org.springframework.cloud.stream.annotation.StreamListener
 import org.springframework.messaging.handler.annotation.Header
 import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.PAYMENT_TASK_APPROVE_INPUT
-import ru.iesorokin.payment.orchestrator.core.service.prepayment.PaymentTaskCommand
-import ru.iesorokin.payment.orchestrator.core.service.prepayment.PaymentTaskCommandService
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.PaymentApproveMessage
+import ru.iesorokin.orchestrator.config.PAYMENT_TASK_APPROVE_INPUT
+import ru.iesorokin.orchestrator.core.service.prepayment.PaymentTaskCommand
+import ru.iesorokin.orchestrator.core.service.prepayment.PaymentTaskCommandService
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.PaymentApproveMessage
 
 private val log = KotlinLogging.logger {}
 

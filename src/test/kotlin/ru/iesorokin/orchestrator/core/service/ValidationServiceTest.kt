@@ -1,23 +1,23 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.APPROVE_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.CANCELLED
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.COMPLETED
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.CONFIRMED
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_AND_GIVEAWAY_DONE
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.EXPIRED
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.GIVEAWAY_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.HOLD
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.NEW
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PARTIALLY_REFUND
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.REFUND
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.UNHOLD
-import ru.iesorokin.payment.orchestrator.core.exception.NoSuitablePaymentStatusForRefund
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.APPROVE_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.CANCELLED
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.COMPLETED
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.CONFIRMED
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_AND_GIVEAWAY_DONE
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.EXPIRED
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.GIVEAWAY_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.HOLD
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.NEW
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PARTIALLY_REFUND
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.REFUND
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.UNHOLD
+import ru.iesorokin.orchestrator.core.exception.NoSuitablePaymentStatusForRefund
 import kotlin.test.assertFailsWith
 
 class ValidationServiceTest {

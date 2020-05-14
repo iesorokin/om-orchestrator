@@ -1,18 +1,18 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction
+package ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.tpNetInteraction.base.TpNetInteractionCamundaTest
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_DEPOSIT_FAIL
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_DEPOSIT_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_FAIL
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_DEPOSIT_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_GIVEAWAY_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.SOLVE_ISSUE_PLACE_DEPOSIT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.SOLVE_ISSUE_PLACE_GIVEAWAY
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.tpNetInteraction.base.TpNetInteractionCamundaTest
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_DEPOSIT_FAIL
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_DEPOSIT_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_FAIL
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_DEPOSIT_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.RECEIVE_TP_NET_GIVEAWAY_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.SOLVE_ISSUE_PLACE_DEPOSIT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.TpNetInteractionProcessElement.SOLVE_ISSUE_PLACE_GIVEAWAY
 import kotlin.test.assertTrue
 
 class ReceiveTpNetTasksTest : TpNetInteractionCamundaTest() {

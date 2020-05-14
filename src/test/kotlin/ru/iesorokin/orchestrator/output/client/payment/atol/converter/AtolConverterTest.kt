@@ -1,17 +1,17 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.atol.converter
+package ru.iesorokin.orchestrator.output.client.payment.atol.converter
 
 import org.assertj.core.api.Assertions
 import org.junit.Test
-import ru.iesorokin.payment.ATOL_FILE_PATH
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.SOLUTION_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.core.domain.AtolGiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.exception.EmptyFieldException
-import ru.iesorokin.payment.orchestrator.output.client.dto.AtolGiveAwayRegisterRequest
-import ru.iesorokin.payment.orchestrator.output.client.dto.AtolRegisterRequest
+import ru.iesorokin.ATOL_FILE_PATH
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.SOLUTION_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.core.domain.AtolGiveAway
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.exception.EmptyFieldException
+import ru.iesorokin.orchestrator.output.client.dto.AtolGiveAwayRegisterRequest
+import ru.iesorokin.orchestrator.output.client.dto.AtolRegisterRequest
 
 class AtolConverterTest {
 

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.web
+package ru.iesorokin.orchestrator.web
 
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.web.constants.API_VERSION_V1
-import ru.iesorokin.payment.orchestrator.web.constants.EDIT_LINE
-import ru.iesorokin.payment.orchestrator.web.constants.START_GIVE_AWAY
-import ru.iesorokin.payment.orchestrator.web.converter.DtoConverter
-import ru.iesorokin.payment.orchestrator.web.dto.EditLinesRequest
-import ru.iesorokin.payment.orchestrator.web.dto.GiveAwayLinesRequest
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.web.constants.API_VERSION_V1
+import ru.iesorokin.orchestrator.web.constants.EDIT_LINE
+import ru.iesorokin.orchestrator.web.constants.START_GIVE_AWAY
+import ru.iesorokin.orchestrator.web.converter.DtoConverter
+import ru.iesorokin.orchestrator.web.dto.EditLinesRequest
+import ru.iesorokin.orchestrator.web.dto.GiveAwayLinesRequest
 import javax.validation.Valid
 
 @RestController

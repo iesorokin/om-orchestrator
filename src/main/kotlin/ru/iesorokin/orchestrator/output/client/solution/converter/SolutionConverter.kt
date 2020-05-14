@@ -1,20 +1,20 @@
-package ru.iesorokin.payment.orchestrator.output.client.solution.converter
+package ru.iesorokin.orchestrator.output.client.solution.converter
 
 import org.springframework.stereotype.Component
-import ru.iesorokin.payment.orchestrator.core.domain.CreationInformation
-import ru.iesorokin.payment.orchestrator.core.domain.LastUpdateInformation
-import ru.iesorokin.payment.orchestrator.core.domain.Phone
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.domain.SolutionCustomer
-import ru.iesorokin.payment.orchestrator.core.domain.SolutionDiscount
-import ru.iesorokin.payment.orchestrator.core.domain.SolutionLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponse
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponseCreationInformation
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponseCustomer
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponseDiscount
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponseLastUpdateInformation
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponseLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.SolutionResponsePhone
+import ru.iesorokin.orchestrator.core.domain.CreationInformation
+import ru.iesorokin.orchestrator.core.domain.LastUpdateInformation
+import ru.iesorokin.orchestrator.core.domain.Phone
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.domain.SolutionCustomer
+import ru.iesorokin.orchestrator.core.domain.SolutionDiscount
+import ru.iesorokin.orchestrator.core.domain.SolutionLine
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponse
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponseCreationInformation
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponseCustomer
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponseDiscount
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponseLastUpdateInformation
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponseLine
+import ru.iesorokin.orchestrator.output.client.dto.SolutionResponsePhone
 
 @Component
 class SolutionConverter {

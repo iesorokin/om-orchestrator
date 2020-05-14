@@ -1,18 +1,18 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.domain.AgencyAgreement
-import ru.iesorokin.payment.orchestrator.core.domain.AtolGiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.AtolGiveAwayProduct
-import ru.iesorokin.payment.orchestrator.core.domain.AtolGivePayer
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.domain.SolutionCustomer
-import ru.iesorokin.payment.orchestrator.core.domain.SupplierInfo
-import ru.iesorokin.payment.orchestrator.core.enums.CustomerRole
-import ru.iesorokin.payment.orchestrator.core.enums.PaymentTaskLineType
-import ru.iesorokin.payment.orchestrator.output.client.payment.atol.AtolClient
+import ru.iesorokin.orchestrator.core.domain.AgencyAgreement
+import ru.iesorokin.orchestrator.core.domain.AtolGiveAway
+import ru.iesorokin.orchestrator.core.domain.AtolGiveAwayProduct
+import ru.iesorokin.orchestrator.core.domain.AtolGivePayer
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.domain.SolutionCustomer
+import ru.iesorokin.orchestrator.core.domain.SupplierInfo
+import ru.iesorokin.orchestrator.core.enums.CustomerRole
+import ru.iesorokin.orchestrator.core.enums.PaymentTaskLineType
+import ru.iesorokin.orchestrator.output.client.payment.atol.AtolClient
 import java.math.BigDecimal
 import java.time.LocalDateTime
 

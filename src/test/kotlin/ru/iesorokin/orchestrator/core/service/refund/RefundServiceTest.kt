@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.refund
+package ru.iesorokin.orchestrator.core.service.refund
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -8,13 +8,13 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
 import org.mockito.Mockito.never
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.RefundLine
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.output.stream.sender.ConductorSender
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundMessage
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundMessageLine
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundType
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.RefundLine
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.output.stream.sender.ConductorSender
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundMessage
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundMessageLine
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundType
 import java.math.BigDecimal
 
 class RefundServiceTest {

@@ -1,13 +1,13 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.converter
+package ru.iesorokin.orchestrator.output.client.payment.task.converter
 
 import org.springframework.stereotype.Component
-import ru.iesorokin.payment.orchestrator.core.domain.RefundContext
-import ru.iesorokin.payment.orchestrator.core.domain.RefundLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.JsonPatchRequestOperation
-import ru.iesorokin.payment.orchestrator.output.client.dto.OperationType
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.PatchRefundLine
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.PatchRefundRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.RefundStatus
+import ru.iesorokin.orchestrator.core.domain.RefundContext
+import ru.iesorokin.orchestrator.core.domain.RefundLine
+import ru.iesorokin.orchestrator.output.client.dto.JsonPatchRequestOperation
+import ru.iesorokin.orchestrator.output.client.dto.OperationType
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.PatchRefundLine
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.PatchRefundRequest
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.RefundStatus
 
 const val PATCH_PATH_REFUND_STATUS_LIST = "/refundStatusList/-"
 const val PAYMENT_STATUS_APPROVE_IN_PROGRESS = "APPROVE_IN_PROGRESS"

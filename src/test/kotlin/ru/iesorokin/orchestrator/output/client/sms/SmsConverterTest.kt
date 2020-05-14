@@ -1,14 +1,14 @@
-package ru.iesorokin.payment.orchestrator.output.client.sms
+package ru.iesorokin.orchestrator.output.client.sms
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.SMS_REQUEST_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.core.domain.InternalSmsRequest
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponse
-import ru.iesorokin.payment.orchestrator.output.client.sms.dto.SendMultiSmsRequest
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.SMS_REQUEST_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.core.domain.InternalSmsRequest
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponse
+import ru.iesorokin.orchestrator.output.client.sms.dto.SendMultiSmsRequest
 
 class SmsConverterTest {
 

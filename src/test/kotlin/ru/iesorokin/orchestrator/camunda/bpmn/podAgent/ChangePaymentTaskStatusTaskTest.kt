@@ -1,22 +1,22 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.podAgent
+package ru.iesorokin.orchestrator.camunda.bpmn.podAgent
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.podAgent.base.PodAgentCamundaTest
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_AND_GIVEAWAY_DONE
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.GIVEAWAY_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_DEPOSIT_GIVEAWAY_DONE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_DEPOSIT_IN_PROGRESS_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_GIVEAWAY_IN_PROGRESS_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_PAID_TASK
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.podAgent.base.PodAgentCamundaTest
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_AND_GIVEAWAY_DONE
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.GIVEAWAY_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_DEPOSIT_GIVEAWAY_DONE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_DEPOSIT_IN_PROGRESS_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_GIVEAWAY_IN_PROGRESS_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CHANGE_TASK_STATUS_TO_PAID_TASK
 
 class ChangePaymentTaskStatusTaskTest : PodAgentCamundaTest() {
 

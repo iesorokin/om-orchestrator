@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import com.nhaarman.mockito_kotlin.doNothing
 import com.nhaarman.mockito_kotlin.mock
@@ -7,10 +7,10 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.assertj.core.api.Assertions
 import org.junit.Test
 import org.mockito.Mockito.times
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.enums.FiscalizationStatus
-import ru.iesorokin.payment.orchestrator.output.client.solution.SolutionClient
-import ru.iesorokin.payment.orchestrator.output.stream.sender.FiscalizationStatusSender
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.enums.FiscalizationStatus
+import ru.iesorokin.orchestrator.output.client.solution.SolutionClient
+import ru.iesorokin.orchestrator.output.stream.sender.FiscalizationStatusSender
 
 class SolutionServiceTest {
     private val solutionClient = mock<SolutionClient>()

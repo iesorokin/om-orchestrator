@@ -1,15 +1,15 @@
-package ru.iesorokin.payment.orchestrator.core.service.giveaway
+package ru.iesorokin.orchestrator.core.service.giveaway
 
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAway
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_FAIL
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_SUCCESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.PAYMENT_GIVEAWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.TP_NET_INTERACTION
-import ru.iesorokin.payment.orchestrator.core.exception.GiveAwaysNotFoundException
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.core.domain.GiveAway
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_FAIL
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.TPNET_GIVE_AWAY_SUCCESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.PAYMENT_GIVEAWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.TP_NET_INTERACTION
+import ru.iesorokin.orchestrator.core.exception.GiveAwaysNotFoundException
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
 
 @Service
 class GiveAwayService(

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.sleuth
+package ru.iesorokin.orchestrator.sleuth
 
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.doThrow
@@ -10,9 +10,9 @@ import org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity
 import org.camunda.bpm.engine.variable.impl.value.PrimitiveTypeValueImpl
 import org.camunda.bpm.engine.variable.value.StringValue
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.sleuth.SleuthEnum.PROCESS_ID
-import ru.iesorokin.payment.orchestrator.sleuth.SleuthEnum.SOLUTION_ID
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.sleuth.SleuthEnum.PROCESS_ID
+import ru.iesorokin.orchestrator.sleuth.SleuthEnum.SOLUTION_ID
 import ru.iesorokin.utility.sleuthbase.MdcService
 
 class OrchestratorDelegateAspectTest {

@@ -1,17 +1,17 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.podAgent
+package ru.iesorokin.orchestrator.camunda.bpmn.podAgent
 
 import com.nhaarman.mockito_kotlin.whenever
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.Test
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.podAgent.base.PodAgentCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXECUTION_STORE
-import ru.iesorokin.payment.orchestrator.core.constants.process.GIVE_AWAY_ID
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.enums.Application
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CREATE_GIVEAWAY_TASK
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.podAgent.base.PodAgentCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXECUTION_STORE
+import ru.iesorokin.orchestrator.core.constants.process.GIVE_AWAY_ID
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.enums.Application
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodAgentProcessElement.CREATE_GIVEAWAY_TASK
 
 class CreatePaymentGiveAwayTaskTest : PodAgentCamundaTest() {
 

@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.web.converter
+package ru.iesorokin.orchestrator.web.converter
 
 import org.springframework.stereotype.Component
-import ru.iesorokin.payment.orchestrator.core.domain.EditLine
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAwayLine
-import ru.iesorokin.payment.orchestrator.web.dto.EditLineRequest
-import ru.iesorokin.payment.orchestrator.web.dto.GiveAwayLineRequest
+import ru.iesorokin.orchestrator.core.domain.EditLine
+import ru.iesorokin.orchestrator.core.domain.GiveAwayLine
+import ru.iesorokin.orchestrator.web.dto.EditLineRequest
+import ru.iesorokin.orchestrator.web.dto.GiveAwayLineRequest
 
 @Component
 class DtoConverter {

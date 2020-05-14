@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.domain
+package ru.iesorokin.orchestrator.core.domain
 
 data class TpnetItsmTicket(
         val paymentTaskId: String,

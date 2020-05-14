@@ -1,10 +1,10 @@
-package ru.iesorokin.payment.orchestrator.core.service.refund
+package ru.iesorokin.orchestrator.core.service.refund
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.RefundLine
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.RefundLine
 
 internal class RefundContextServiceTest {
 

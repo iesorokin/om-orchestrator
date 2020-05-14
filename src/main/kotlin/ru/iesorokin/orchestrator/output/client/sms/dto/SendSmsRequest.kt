@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.sms.dto
+package ru.iesorokin.orchestrator.output.client.sms.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
 

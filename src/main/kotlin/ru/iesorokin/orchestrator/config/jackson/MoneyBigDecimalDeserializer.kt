@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config.jackson
+package ru.iesorokin.orchestrator.config.jackson
 
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.DeserializationContext

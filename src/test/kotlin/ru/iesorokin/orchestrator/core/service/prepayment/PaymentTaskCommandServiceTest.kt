@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.prepayment
+package ru.iesorokin.orchestrator.core.service.prepayment
 
 import com.nhaarman.mockito_kotlin.whenever
 import org.assertj.core.api.Assertions
@@ -9,18 +9,18 @@ import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.messaging.support.MessageBuilder
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.FULL_APPROVE_KEY
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.SBERBANK_PREPAYMENT_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.APPROVE_PAYMENT_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_PAYEMNT_TASK_COMPLETION
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.FULL_APPROVE_KEY
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.SBERBANK_PREPAYMENT_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.APPROVE_PAYMENT_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_PAYEMNT_TASK_COMPLETION
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
 
 class PaymentTaskCommandServiceTest : BaseSpringBootWithCamundaTest() {
 

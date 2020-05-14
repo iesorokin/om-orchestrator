@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.web
+package ru.iesorokin.orchestrator.web
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doNothing
@@ -25,20 +25,20 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import ru.iesorokin.payment.orchestrator.core.domain.EditLine
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAwayLine
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.exception.InvalidLineTypeException
-import ru.iesorokin.payment.orchestrator.core.exception.InvalidTaskStatusException
-import ru.iesorokin.payment.orchestrator.core.exception.InvalidUnitAmountIncludingVatException
-import ru.iesorokin.payment.orchestrator.core.exception.LineNotFoundException
-import ru.iesorokin.payment.orchestrator.core.exception.PaymentClientException
-import ru.iesorokin.payment.orchestrator.core.exception.PaymentTaskNotFoundException
-import ru.iesorokin.payment.orchestrator.core.exception.StartProcessException
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.web.constants.API_VERSION_V1
-import ru.iesorokin.payment.orchestrator.web.constants.EDIT_LINE
-import ru.iesorokin.payment.orchestrator.web.constants.START_GIVE_AWAY
+import ru.iesorokin.orchestrator.core.domain.EditLine
+import ru.iesorokin.orchestrator.core.domain.GiveAwayLine
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.exception.InvalidLineTypeException
+import ru.iesorokin.orchestrator.core.exception.InvalidTaskStatusException
+import ru.iesorokin.orchestrator.core.exception.InvalidUnitAmountIncludingVatException
+import ru.iesorokin.orchestrator.core.exception.LineNotFoundException
+import ru.iesorokin.orchestrator.core.exception.PaymentClientException
+import ru.iesorokin.orchestrator.core.exception.PaymentTaskNotFoundException
+import ru.iesorokin.orchestrator.core.exception.StartProcessException
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.web.constants.API_VERSION_V1
+import ru.iesorokin.orchestrator.web.constants.EDIT_LINE
+import ru.iesorokin.orchestrator.web.constants.START_GIVE_AWAY
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")

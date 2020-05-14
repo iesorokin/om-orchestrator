@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.constants.process
+package ru.iesorokin.orchestrator.core.constants.process
 
 //TODO get rid of all constants, make up enums
 const val PAYMENT_TASK_ID = "paymentTaskId"

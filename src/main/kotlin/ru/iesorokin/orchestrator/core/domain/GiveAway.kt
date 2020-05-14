@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.domain
+package ru.iesorokin.orchestrator.core.domain
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.math.BigDecimal

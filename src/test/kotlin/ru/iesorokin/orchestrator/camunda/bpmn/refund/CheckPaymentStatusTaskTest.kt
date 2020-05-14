@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.refund
+package ru.iesorokin.orchestrator.camunda.bpmn.refund
 
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
@@ -7,16 +7,16 @@ import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertTha
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import ru.iesorokin.payment.PAYMENT_TASK_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.HOLD
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement.CHECK_CURRENT_PAYMENT_STATUS_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.RefundProcessElement.REFUND_TP_NET_TASK
+import ru.iesorokin.PAYMENT_TASK_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.bpmn.refund.base.RefundCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.HOLD
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process.SBERBANK_REFUND_WITH_TPNET
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement.CHECK_CURRENT_PAYMENT_STATUS_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.RefundProcessElement.REFUND_TP_NET_TASK
 
 class CheckPaymentStatusTaskTest : RefundCamundaTest() {
 

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config.bpmn
+package ru.iesorokin.orchestrator.config.bpmn
 
 import mu.KotlinLogging
 import org.camunda.bpm.engine.impl.incident.DefaultIncidentHandler

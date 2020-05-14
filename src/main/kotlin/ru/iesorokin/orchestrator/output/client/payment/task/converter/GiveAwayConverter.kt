@@ -1,14 +1,14 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.converter
+package ru.iesorokin.orchestrator.output.client.payment.task.converter
 
 import org.springframework.stereotype.Component
-import ru.iesorokin.payment.orchestrator.core.domain.AgencyAgreement
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAwayExternalLine
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.AddGiveAwayLineRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.AddGiveAwayRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.AgencyAgreementResponse
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.GiveAwayResponseItem
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.GiveAwayResponseItemLine
+import ru.iesorokin.orchestrator.core.domain.AgencyAgreement
+import ru.iesorokin.orchestrator.core.domain.GiveAway
+import ru.iesorokin.orchestrator.core.domain.GiveAwayExternalLine
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.AddGiveAwayLineRequest
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.AddGiveAwayRequest
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.AgencyAgreementResponse
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.GiveAwayResponseItem
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.GiveAwayResponseItemLine
 
 @Component
 class GiveAwayConverter {

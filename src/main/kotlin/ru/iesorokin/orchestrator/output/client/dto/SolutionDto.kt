@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.dto
+package ru.iesorokin.orchestrator.output.client.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.math.BigDecimal

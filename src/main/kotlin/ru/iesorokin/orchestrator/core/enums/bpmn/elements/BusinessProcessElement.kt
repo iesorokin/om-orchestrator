@@ -1,14 +1,14 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements
+package ru.iesorokin.orchestrator.core.enums.bpmn.elements
 
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.BOUNDARY_EVENT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.GATEWAY
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SCRIPT_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SEND_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.SERVICE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.TIMER_EVENT
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.ProcessElementType.USER_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.BOUNDARY_EVENT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.GATEWAY
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.RECEIVE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SCRIPT_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SEND_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.SERVICE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.TIMER_EVENT
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.ProcessElementType.USER_TASK
 
 // todo: seperate to enums
 enum class BusinessProcessElement(val code: String, val type: ProcessElementType) {

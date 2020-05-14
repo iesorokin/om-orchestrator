@@ -1,15 +1,15 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.atol
+package ru.iesorokin.orchestrator.output.client.payment.atol
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
-import ru.iesorokin.payment.orchestrator.core.domain.AtolGiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.Solution
-import ru.iesorokin.payment.orchestrator.core.exception.EmptyAtolResponseException
-import ru.iesorokin.payment.orchestrator.output.client.dto.AtolRegisterResponse
-import ru.iesorokin.payment.orchestrator.output.client.payment.atol.converter.AtolConverter
+import ru.iesorokin.orchestrator.core.domain.AtolGiveAway
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.Solution
+import ru.iesorokin.orchestrator.core.exception.EmptyAtolResponseException
+import ru.iesorokin.orchestrator.output.client.dto.AtolRegisterResponse
+import ru.iesorokin.orchestrator.output.client.payment.atol.converter.AtolConverter
 
 @Component
 @RefreshScope

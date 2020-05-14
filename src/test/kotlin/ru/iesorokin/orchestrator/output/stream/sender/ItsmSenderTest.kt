@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
@@ -12,12 +12,12 @@ import org.springframework.cloud.stream.test.binder.MessageCollector
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.domain.TpnetItsmTicket
-import ru.iesorokin.payment.orchestrator.output.stream.sender.constants.ITSM_TICKET_TPNET_ROUTING_KEY
-import ru.iesorokin.payment.orchestrator.output.stream.sender.constants.ROUTE_TO
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpnetItsmTicketMessage
-import ru.iesorokin.payment.readPayloadTo
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.domain.TpnetItsmTicket
+import ru.iesorokin.orchestrator.output.stream.sender.constants.ITSM_TICKET_TPNET_ROUTING_KEY
+import ru.iesorokin.orchestrator.output.stream.sender.constants.ROUTE_TO
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpnetItsmTicketMessage
+import ru.iesorokin.readPayloadTo
 
 @RunWith(SpringRunner::class)
 @ActiveProfiles("test")

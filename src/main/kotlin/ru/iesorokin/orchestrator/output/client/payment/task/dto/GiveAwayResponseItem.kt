@@ -1,7 +1,7 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.dto
+package ru.iesorokin.orchestrator.output.client.payment.task.dto
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import ru.iesorokin.payment.orchestrator.core.enums.SupplierType
+import ru.iesorokin.orchestrator.core.enums.SupplierType
 import java.math.BigDecimal
 import java.time.LocalDateTime
 

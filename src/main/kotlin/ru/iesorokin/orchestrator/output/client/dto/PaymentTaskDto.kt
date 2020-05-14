@@ -1,9 +1,9 @@
-package ru.iesorokin.payment.orchestrator.output.client.dto
+package ru.iesorokin.orchestrator.output.client.dto
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import ru.iesorokin.payment.orchestrator.core.domain.AgencyAgreement
+import ru.iesorokin.orchestrator.core.domain.AgencyAgreement
 import java.math.BigDecimal
 import java.time.ZonedDateTime
 

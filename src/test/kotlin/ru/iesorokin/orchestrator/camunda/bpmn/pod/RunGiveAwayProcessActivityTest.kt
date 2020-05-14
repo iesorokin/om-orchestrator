@@ -1,15 +1,15 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod
+package ru.iesorokin.orchestrator.camunda.bpmn.pod
 
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXECUTION_STORE
-import ru.iesorokin.payment.orchestrator.core.constants.process.EXT_ORDER_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.GIVE_AWAY
-import ru.iesorokin.payment.orchestrator.core.constants.process.GIVE_AWAY_ID
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
+import ru.iesorokin.orchestrator.core.constants.process.EXECUTION_STORE
+import ru.iesorokin.orchestrator.core.constants.process.EXT_ORDER_ID
+import ru.iesorokin.orchestrator.core.constants.process.GIVE_AWAY
+import ru.iesorokin.orchestrator.core.constants.process.GIVE_AWAY_ID
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement
 import kotlin.test.assertEquals
 
 class RunGiveAwayProcessActivityTest : PodCamundaTest() {

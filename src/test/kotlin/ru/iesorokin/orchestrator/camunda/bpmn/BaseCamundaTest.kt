@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn
+package ru.iesorokin.orchestrator.camunda.bpmn
 
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat

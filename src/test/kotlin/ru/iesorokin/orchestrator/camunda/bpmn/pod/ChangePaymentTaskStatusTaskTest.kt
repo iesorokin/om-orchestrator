@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.pod
+package ru.iesorokin.orchestrator.camunda.bpmn.pod
 
 import com.nhaarman.mockito_kotlin.doNothing
 import com.nhaarman.mockito_kotlin.times
@@ -7,14 +7,14 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareAssertions.assertThat
 import org.junit.After
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.APPROVE_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.CHANGE_TASK_STATUS_TO_APPROVE_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.CHANGE_TASK_STATUS_TO_DEPOSIT_IN_PROGRESS
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement.CHANGE_TASK_STATUS_TO_PAID
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.camunda.bpmn.pod.base.PodCamundaTest
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.APPROVE_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.DEPOSIT_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus.PAID
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.CHANGE_TASK_STATUS_TO_APPROVE_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.CHANGE_TASK_STATUS_TO_DEPOSIT_IN_PROGRESS
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement.CHANGE_TASK_STATUS_TO_PAID
 
 class ChangePaymentTaskStatusTaskTest : PodCamundaTest() {
 

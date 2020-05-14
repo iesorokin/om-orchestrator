@@ -1,7 +1,7 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.dto
+package ru.iesorokin.orchestrator.output.client.payment.task.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import ru.iesorokin.payment.orchestrator.core.domain.AgencyAgreement
+import ru.iesorokin.orchestrator.core.domain.AgencyAgreement
 import java.math.BigDecimal
 
 data class AddGiveAwayRequest(

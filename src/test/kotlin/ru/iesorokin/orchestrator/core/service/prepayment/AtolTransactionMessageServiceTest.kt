@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.prepayment
+package ru.iesorokin.orchestrator.core.service.prepayment
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doNothing
@@ -8,16 +8,16 @@ import org.junit.Test
 import org.junit.rules.ExpectedException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
-import ru.iesorokin.payment.ATOL_FILE_PATH
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.camunda.BaseSpringBootWithCamundaTest
-import ru.iesorokin.payment.orchestrator.camunda.bpmn.endProcess
-import ru.iesorokin.payment.orchestrator.core.constants.process.ATOL_REGISTER_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.Process
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_ATOL_SUCCESS_RECEIVE_TASK
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.elements.PodProcessElement
-import ru.iesorokin.payment.orchestrator.core.task.common.SaveDataFromAtolTask
-import ru.iesorokin.payment.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
+import ru.iesorokin.ATOL_FILE_PATH
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.camunda.BaseSpringBootWithCamundaTest
+import ru.iesorokin.orchestrator.camunda.bpmn.endProcess
+import ru.iesorokin.orchestrator.core.constants.process.ATOL_REGISTER_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.Process
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.BusinessProcessElement.RECEIVE_ATOL_SUCCESS_RECEIVE_TASK
+import ru.iesorokin.orchestrator.core.enums.bpmn.elements.PodProcessElement
+import ru.iesorokin.orchestrator.core.task.common.SaveDataFromAtolTask
+import ru.iesorokin.orchestrator.input.stream.receiver.dto.AtolTransactionMessage
 
 class AtolTransactionMessageServiceTest : BaseSpringBootWithCamundaTest() {
     @Autowired

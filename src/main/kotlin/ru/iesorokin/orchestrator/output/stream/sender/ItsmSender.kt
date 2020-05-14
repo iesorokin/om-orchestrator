@@ -1,14 +1,14 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender
+package ru.iesorokin.orchestrator.output.stream.sender
 
 import mu.KotlinLogging
 import org.springframework.integration.support.MessageBuilder
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.config.CREATE_ITSM_TICKET_OUTPUT
-import ru.iesorokin.payment.orchestrator.config.MessagingSource
-import ru.iesorokin.payment.orchestrator.core.domain.TpnetItsmTicket
-import ru.iesorokin.payment.orchestrator.output.stream.sender.constants.ITSM_TICKET_TPNET_ROUTING_KEY
-import ru.iesorokin.payment.orchestrator.output.stream.sender.constants.ROUTE_TO
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.TpnetItsmTicketMessage
+import ru.iesorokin.orchestrator.config.CREATE_ITSM_TICKET_OUTPUT
+import ru.iesorokin.orchestrator.config.MessagingSource
+import ru.iesorokin.orchestrator.core.domain.TpnetItsmTicket
+import ru.iesorokin.orchestrator.output.stream.sender.constants.ITSM_TICKET_TPNET_ROUTING_KEY
+import ru.iesorokin.orchestrator.output.stream.sender.constants.ROUTE_TO
+import ru.iesorokin.orchestrator.output.stream.sender.dto.TpnetItsmTicketMessage
 
 private val log = KotlinLogging.logger {}
 

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn
+package ru.iesorokin.orchestrator.core.enums.bpmn
 
 import org.camunda.bpm.engine.delegate.BpmnError
 

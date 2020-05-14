@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.service.refund
+package ru.iesorokin.orchestrator.core.service.refund
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doThrow
@@ -6,11 +6,11 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Test
-import ru.iesorokin.payment.getFileAsObject
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.exception.SberbankRefundException
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.output.client.payment.SberbankClient
+import ru.iesorokin.getFileAsObject
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.exception.SberbankRefundException
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.output.client.payment.SberbankClient
 
 private const val FILE_PATH = "refundSberbankService/"
 

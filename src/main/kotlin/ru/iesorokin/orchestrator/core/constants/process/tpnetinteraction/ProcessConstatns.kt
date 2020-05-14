@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.constants.process.tpnetinteraction
+package ru.iesorokin.orchestrator.core.constants.process.tpnetinteraction
 
 const val TP_NET_TYPE = "tpNetType"
 const val TP_NET_TYPE_DEPOSIT = "DEPOSIT"

@@ -1,11 +1,11 @@
-package ru.iesorokin.payment.orchestrator.core.service.refund
+package ru.iesorokin.orchestrator.core.service.refund
 
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.output.stream.sender.ConductorSender
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundMessage
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundMessageLine
-import ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor.RefundType
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.output.stream.sender.ConductorSender
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundMessage
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundMessageLine
+import ru.iesorokin.orchestrator.output.stream.sender.dto.conductor.RefundType
 
 @Service
 class RefundService(private val paymentTaskService: PaymentTaskService,

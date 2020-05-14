@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.config
+package ru.iesorokin.orchestrator.config
 
 import org.apache.http.client.HttpClient
 import org.apache.http.impl.client.HttpClientBuilder
@@ -21,9 +21,9 @@ import org.springframework.web.client.RestTemplate
 import org.zalando.logbook.Logbook
 import org.zalando.logbook.httpclient.LogbookHttpRequestInterceptor
 import org.zalando.logbook.httpclient.LogbookHttpResponseInterceptor
-import ru.iesorokin.payment.orchestrator.core.enums.Application
-import ru.iesorokin.payment.orchestrator.core.enums.ErrorCode
-import ru.iesorokin.payment.orchestrator.output.client.ClientErrorHandler
+import ru.iesorokin.orchestrator.core.enums.Application
+import ru.iesorokin.orchestrator.core.enums.ErrorCode
+import ru.iesorokin.orchestrator.output.client.ClientErrorHandler
 import java.io.IOException
 
 const val LEAD_APPLICATION = "Lead-application"

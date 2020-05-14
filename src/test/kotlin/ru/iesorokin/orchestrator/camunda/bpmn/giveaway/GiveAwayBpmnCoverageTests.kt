@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.camunda.bpmn.giveaway
+package ru.iesorokin.orchestrator.camunda.bpmn.giveaway
 
 import org.junit.runner.RunWith
 import org.junit.runners.Suite

@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.enums
+package ru.iesorokin.orchestrator.core.enums
 
 enum class ErrorCode(val code: Int, val errorMessage: String) {
     PAYMENT_TASK_NOT_AVAILABLE(105, "Payment task is not available."),

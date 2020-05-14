@@ -1,9 +1,9 @@
-package ru.iesorokin.payment.orchestrator.core.service
+package ru.iesorokin.orchestrator.core.service
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
-import ru.iesorokin.payment.orchestrator.output.stream.sender.TpNetSender
+import ru.iesorokin.orchestrator.output.stream.sender.TpNetSender
 import ru.iesorokin.utility.sleuthbase.MdcService
 
 class TpNetServiceTest {

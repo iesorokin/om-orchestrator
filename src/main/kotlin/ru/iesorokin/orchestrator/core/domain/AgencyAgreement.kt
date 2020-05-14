@@ -1,7 +1,7 @@
-package ru.iesorokin.payment.orchestrator.core.domain
+package ru.iesorokin.orchestrator.core.domain
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import ru.iesorokin.payment.orchestrator.core.enums.SupplierType
+import ru.iesorokin.orchestrator.core.enums.SupplierType
 import java.math.BigDecimal
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin

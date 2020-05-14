@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.core.enums.bpmn
+package ru.iesorokin.orchestrator.core.enums.bpmn
 
 enum class Process(val processName: String) {
     SBERBANK_PREPAYMENT_WITH_TPNET("SBERBANK_PREPAYMENT_WITH_TPNET"),

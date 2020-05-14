@@ -1,8 +1,8 @@
-package ru.iesorokin.payment.orchestrator.output.client.sms
+package ru.iesorokin.orchestrator.output.client.sms
 
 import org.springframework.stereotype.Component
-import ru.iesorokin.payment.orchestrator.core.domain.InternalSmsRequest
-import ru.iesorokin.payment.orchestrator.output.client.sms.dto.SendMultiSmsRequest
+import ru.iesorokin.orchestrator.core.domain.InternalSmsRequest
+import ru.iesorokin.orchestrator.output.client.sms.dto.SendMultiSmsRequest
 
 @Component
 class SmsConverter {

@@ -1,15 +1,15 @@
-package ru.iesorokin.payment.orchestrator.core.service.prepayment
+package ru.iesorokin.orchestrator.core.service.prepayment
 
 import mu.KotlinLogging
 import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.springframework.stereotype.Service
-import ru.iesorokin.payment.orchestrator.core.constants.process.FULL_APPROVE_KEY
-import ru.iesorokin.payment.orchestrator.core.constants.process.PAYMENT_TASK_ID
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.PAYMENT_APPROVED
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.BusinessProcessEvent.PAYMENT_COMPLETE
-import ru.iesorokin.payment.orchestrator.core.service.CamundaService
-import ru.iesorokin.payment.orchestrator.core.service.PaymentTaskService
-import ru.iesorokin.payment.orchestrator.sleuth.propagateOrchestrationData
+import ru.iesorokin.orchestrator.core.constants.process.FULL_APPROVE_KEY
+import ru.iesorokin.orchestrator.core.constants.process.PAYMENT_TASK_ID
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.PAYMENT_APPROVED
+import ru.iesorokin.orchestrator.core.enums.bpmn.BusinessProcessEvent.PAYMENT_COMPLETE
+import ru.iesorokin.orchestrator.core.service.CamundaService
+import ru.iesorokin.orchestrator.core.service.PaymentTaskService
+import ru.iesorokin.orchestrator.sleuth.propagateOrchestrationData
 import ru.iesorokin.utility.sleuthbase.MdcService
 
 private val log = KotlinLogging.logger { }

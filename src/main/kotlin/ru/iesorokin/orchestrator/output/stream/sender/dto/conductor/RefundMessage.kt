@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.stream.sender.dto.conductor
+package ru.iesorokin.orchestrator.output.stream.sender.dto.conductor
 
 import java.math.BigDecimal
 

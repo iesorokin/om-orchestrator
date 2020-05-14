@@ -1,4 +1,4 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task
+package ru.iesorokin.orchestrator.output.client.payment.task
 
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
@@ -9,25 +9,25 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
-import ru.iesorokin.payment.orchestrator.core.domain.EditLine
-import ru.iesorokin.payment.orchestrator.core.domain.GiveAway
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskFiscalData
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskRegisterStatus
-import ru.iesorokin.payment.orchestrator.core.domain.RefundContext
-import ru.iesorokin.payment.orchestrator.core.enums.bpmn.PaymentTransactionStatus
-import ru.iesorokin.payment.orchestrator.core.exception.GiveAwaysNotFoundException
-import ru.iesorokin.payment.orchestrator.core.exception.PaymentClientException
-import ru.iesorokin.payment.orchestrator.core.exception.PaymentTaskNotFoundException
-import ru.iesorokin.payment.orchestrator.output.client.dto.JsonPatchRequestOperation
-import ru.iesorokin.payment.orchestrator.output.client.dto.OperationType
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponse
-import ru.iesorokin.payment.orchestrator.output.client.dto.UpdateTaskStatusRequest
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.converter.GiveAwayConverter
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.converter.PaymentTaskConverter
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.converter.RefundDtosConverter
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.GiveAwayResponseItem
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.PatchLinesRequest
+import ru.iesorokin.orchestrator.core.domain.EditLine
+import ru.iesorokin.orchestrator.core.domain.GiveAway
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskFiscalData
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskRegisterStatus
+import ru.iesorokin.orchestrator.core.domain.RefundContext
+import ru.iesorokin.orchestrator.core.enums.bpmn.PaymentTransactionStatus
+import ru.iesorokin.orchestrator.core.exception.GiveAwaysNotFoundException
+import ru.iesorokin.orchestrator.core.exception.PaymentClientException
+import ru.iesorokin.orchestrator.core.exception.PaymentTaskNotFoundException
+import ru.iesorokin.orchestrator.output.client.dto.JsonPatchRequestOperation
+import ru.iesorokin.orchestrator.output.client.dto.OperationType
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponse
+import ru.iesorokin.orchestrator.output.client.dto.UpdateTaskStatusRequest
+import ru.iesorokin.orchestrator.output.client.payment.task.converter.GiveAwayConverter
+import ru.iesorokin.orchestrator.output.client.payment.task.converter.PaymentTaskConverter
+import ru.iesorokin.orchestrator.output.client.payment.task.converter.RefundDtosConverter
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.GiveAwayResponseItem
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.PatchLinesRequest
 import kotlin.reflect.full.memberProperties
 
 private const val APPLICATION_JSON_PATCH = "application/json-patch+json"

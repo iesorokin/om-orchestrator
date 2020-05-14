@@ -1,27 +1,27 @@
-package ru.iesorokin.payment.orchestrator.output.client.payment.task.converter
+package ru.iesorokin.orchestrator.output.client.payment.task.converter
 
 import org.springframework.stereotype.Component
-import ru.iesorokin.payment.orchestrator.core.domain.AgencyAgreement
-import ru.iesorokin.payment.orchestrator.core.domain.CreationInformation
-import ru.iesorokin.payment.orchestrator.core.domain.EditLine
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTask
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskFiscalData
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskFiscalDataLine
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskLine
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskLineDiscount
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskLink
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskRegisterStatus
-import ru.iesorokin.payment.orchestrator.core.domain.PaymentTaskRegisterStatusLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponse
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseCreated
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseFiscalData
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseFiscalDataLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseLine
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseLineDiscount
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseLink
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseRegisterStatus
-import ru.iesorokin.payment.orchestrator.output.client.dto.PaymentTaskResponseRegisterStatusLine
-import ru.iesorokin.payment.orchestrator.output.client.payment.task.dto.PatchLineRequest
+import ru.iesorokin.orchestrator.core.domain.AgencyAgreement
+import ru.iesorokin.orchestrator.core.domain.CreationInformation
+import ru.iesorokin.orchestrator.core.domain.EditLine
+import ru.iesorokin.orchestrator.core.domain.PaymentTask
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskFiscalData
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskFiscalDataLine
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskLine
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskLineDiscount
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskLink
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskRegisterStatus
+import ru.iesorokin.orchestrator.core.domain.PaymentTaskRegisterStatusLine
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponse
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseCreated
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseFiscalData
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseFiscalDataLine
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseLine
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseLineDiscount
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseLink
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseRegisterStatus
+import ru.iesorokin.orchestrator.output.client.dto.PaymentTaskResponseRegisterStatusLine
+import ru.iesorokin.orchestrator.output.client.payment.task.dto.PatchLineRequest
 
 @Component
 class PaymentTaskConverter {
