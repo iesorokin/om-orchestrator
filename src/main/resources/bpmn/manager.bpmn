@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1kcae8z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.2">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1kcae8z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.2">
   <bpmn:process id="Process_0j1e9b8" isExecutable="true">
-    <bpmn:sequenceFlow id="Flow_0le7vru" sourceRef="StartEvent_1" targetRef="Activity_1h548d5" />
+    <bpmn:sequenceFlow id="Flow_0le7vru" sourceRef="StartOrchestrationProcessMessageReceiver" targetRef="Activity_1h548d5" />
     <bpmn:sequenceFlow id="Flow_0c773nu" sourceRef="Activity_06lxlom" targetRef="Activity_1r5flub" />
     <bpmn:endEvent id="Event_0c9rfrm">
       <bpmn:incoming>Flow_1flz7h5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Activity_1h548d5" name="Hold payment">
+    <bpmn:callActivity id="Activity_1h548d5" name="Hold payment" camunda:asyncBefore="true" camunda:exclusive="false" calledElement="payment_hold_transaction">
       <bpmn:incoming>Flow_0le7vru</bpmn:incoming>
       <bpmn:outgoing>Flow_1tccukd</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Activity_0nqare6" name="Fulfillment">
+    <bpmn:callActivity id="Activity_0nqare6" name="Fulfillment" calledElement="fulfullment">
       <bpmn:incoming>Flow_1kzdhvw</bpmn:incoming>
       <bpmn:outgoing>Flow_10bp480</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Activity_06lxlom" name="Confirm payment">
+    <bpmn:callActivity id="Activity_06lxlom" name="Confirm payment" calledElement="payment_confirm_transaction">
       <bpmn:incoming>Flow_141dhs1</bpmn:incoming>
       <bpmn:incoming>Flow_13meowl</bpmn:incoming>
       <bpmn:outgoing>Flow_0c773nu</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Activity_1r5flub" name="Delivery">
+    <bpmn:callActivity id="Activity_1r5flub" name="Delivery" calledElement="delivery">
       <bpmn:incoming>Flow_0c773nu</bpmn:incoming>
       <bpmn:outgoing>Flow_001h9q1</bpmn:outgoing>
     </bpmn:callActivity>
@@ -29,7 +29,9 @@
       <bpmn:outgoing>Flow_0c8momp</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1tccukd" sourceRef="Activity_1h548d5" targetRef="Gateway_0dmectp" />
-    <bpmn:sequenceFlow id="Flow_1kzdhvw" sourceRef="Gateway_0dmectp" targetRef="Activity_0nqare6" />
+    <bpmn:sequenceFlow id="Flow_1kzdhvw" sourceRef="Gateway_0dmectp" targetRef="Activity_0nqare6">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_1nxfjj0">
       <bpmn:incoming>Flow_0c8momp</bpmn:incoming>
     </bpmn:endEvent>
@@ -41,15 +43,17 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_10bp480" sourceRef="Activity_0nqare6" targetRef="Gateway_1l3tg3g" />
     <bpmn:sequenceFlow id="Flow_0sx8jpk" sourceRef="Gateway_1l3tg3g" targetRef="Activity_13f65wi" />
-    <bpmn:callActivity id="Activity_13f65wi" name="Part rollout">
+    <bpmn:callActivity id="Activity_13f65wi" name="Part rollout" calledElement="part_rollout">
       <bpmn:incoming>Flow_0sx8jpk</bpmn:incoming>
       <bpmn:outgoing>Flow_13meowl</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:sequenceFlow id="Flow_141dhs1" sourceRef="Gateway_1l3tg3g" targetRef="Activity_06lxlom" />
+    <bpmn:sequenceFlow id="Flow_141dhs1" sourceRef="Gateway_1l3tg3g" targetRef="Activity_06lxlom">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_13meowl" sourceRef="Activity_13f65wi" targetRef="Activity_06lxlom" />
-    <bpmn:startEvent id="StartEvent_1">
+    <bpmn:startEvent id="StartOrchestrationProcessMessageReceiver" camunda:asyncBefore="true" camunda:exclusive="false">
       <bpmn:outgoing>Flow_0le7vru</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1901sut" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1901sut" messageRef="Message_1u7f0q0" />
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_001h9q1" sourceRef="Activity_1r5flub" targetRef="Activity_17timgb" />
     <bpmn:userTask id="Activity_17timgb" name="Feedback">
@@ -64,10 +68,19 @@
     <bpmn:textAnnotation id="TextAnnotation_1nrrbv0">
       <bpmn:text>Checkout completed</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_0dxe51c" sourceRef="StartEvent_1" targetRef="TextAnnotation_1nrrbv0" />
+    <bpmn:association id="Association_0dxe51c" sourceRef="StartOrchestrationProcessMessageReceiver" targetRef="TextAnnotation_1nrrbv0" />
   </bpmn:process>
+  <bpmn:message id="Message_1u7f0q0" name="Message_2ugedgj" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0j1e9b8">
+      <bpmndi:BPMNEdge id="Flow_1flz7h5_di" bpmnElement="Flow_1flz7h5">
+        <di:waypoint x="1350" y="114" />
+        <di:waypoint x="1422" y="114" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_001h9q1_di" bpmnElement="Flow_001h9q1">
+        <di:waypoint x="1170" y="114" />
+        <di:waypoint x="1250" y="114" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13meowl_di" bpmnElement="Flow_13meowl">
         <di:waypoint x="970" y="195" />
         <di:waypoint x="970" y="154" />
@@ -105,14 +118,9 @@
         <di:waypoint x="338" y="120" />
         <di:waypoint x="400" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_001h9q1_di" bpmnElement="Flow_001h9q1">
-        <di:waypoint x="1170" y="114" />
-        <di:waypoint x="1250" y="114" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1flz7h5_di" bpmnElement="Flow_1flz7h5">
-        <di:waypoint x="1350" y="114" />
-        <di:waypoint x="1422" y="114" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0c9rfrm_di" bpmnElement="Event_0c9rfrm">
+        <dc:Bounds x="1422" y="96" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ojdb1i_di" bpmnElement="Activity_1h548d5">
         <dc:Bounds x="400" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -137,20 +145,17 @@
       <bpmndi:BPMNShape id="Activity_0x1ziai_di" bpmnElement="Activity_13f65wi">
         <dc:Bounds x="920" y="195" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_10qqpt7_di" bpmnElement="StartEvent_1">
+      <bpmndi:BPMNShape id="Event_10qqpt7_di" bpmnElement="StartOrchestrationProcessMessageReceiver">
         <dc:Bounds x="302" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00dowvt_di" bpmnElement="Activity_17timgb">
+        <dc:Bounds x="1250" y="74" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_091g2vr_di" bpmnElement="TextAnnotation_091g2vr">
         <dc:Bounds x="630" y="220" width="99.99274099883856" height="29.997822299651567" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_1nrrbv0_di" bpmnElement="TextAnnotation_1nrrbv0">
         <dc:Bounds x="180" y="100" width="70" height="39" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0c9rfrm_di" bpmnElement="Event_0c9rfrm">
-        <dc:Bounds x="1422" y="96" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_00dowvt_di" bpmnElement="Activity_17timgb">
-        <dc:Bounds x="1250" y="74" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1y9w8i7_di" bpmnElement="Association_1y9w8i7">
         <di:waypoint x="598" y="235" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_05sjq3r" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.2">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_05sjq3r" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.2">
   <bpmn:process id="Process_1eg3xds" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1ecg5sf</bpmn:outgoing>
@@ -10,28 +10,20 @@
       <bpmn:outgoing>Flow_1y3k76u</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_01xwm6m" sourceRef="Gateway_1txzcfr" targetRef="Activity_0q17ntg" />
-    <bpmn:sequenceFlow id="Flow_1y3k76u" sourceRef="Gateway_1txzcfr" targetRef="Activity_1atekmv" />
+    <bpmn:sequenceFlow id="Flow_1y3k76u" sourceRef="Gateway_1txzcfr" targetRef="ConfirmSberbankTask" />
     <bpmn:inclusiveGateway id="Gateway_04s6b99">
       <bpmn:incoming>Flow_0ver3rs</bpmn:incoming>
       <bpmn:incoming>Flow_1q7av16</bpmn:incoming>
       <bpmn:outgoing>Flow_0ot6ox0</bpmn:outgoing>
     </bpmn:inclusiveGateway>
-    <bpmn:serviceTask id="Activity_1atekmv" name="Bank holding">
-      <bpmn:incoming>Flow_1y3k76u</bpmn:incoming>
-      <bpmn:outgoing>Flow_1tefw84</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0q17ntg" name="Fiscal registering">
-      <bpmn:incoming>Flow_01xwm6m</bpmn:incoming>
-      <bpmn:outgoing>Flow_1bupyyg</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_1ecg5sf" sourceRef="StartEvent_1" targetRef="Gateway_1txzcfr" />
     <bpmn:sequenceFlow id="Flow_1bupyyg" sourceRef="Activity_0q17ntg" targetRef="Activity_1hgagzb" />
-    <bpmn:receiveTask id="Activity_1hgagzb" name="Receive success registering">
+    <bpmn:receiveTask id="Activity_1hgagzb" name="Receive success registering" camunda:asyncBefore="true" camunda:exclusive="false" messageRef="Message_1b01uwl">
       <bpmn:incoming>Flow_1bupyyg</bpmn:incoming>
       <bpmn:outgoing>Flow_0ver3rs</bpmn:outgoing>
     </bpmn:receiveTask>
-    <bpmn:sequenceFlow id="Flow_1tefw84" sourceRef="Activity_1atekmv" targetRef="Activity_0ykgb5o" />
-    <bpmn:receiveTask id="Activity_0ykgb5o" name="Receive success holding">
+    <bpmn:sequenceFlow id="Flow_1tefw84" sourceRef="ConfirmSberbankTask" targetRef="Activity_0ykgb5o" />
+    <bpmn:receiveTask id="Activity_0ykgb5o" name="Receive success holding" camunda:asyncBefore="true" camunda:exclusive="false" messageRef="Message_0khpfgu">
       <bpmn:incoming>Flow_1tefw84</bpmn:incoming>
       <bpmn:outgoing>Flow_1q7av16</bpmn:outgoing>
     </bpmn:receiveTask>
@@ -41,54 +33,58 @@
       <bpmn:incoming>Flow_0ot6ox0</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0ot6ox0" sourceRef="Gateway_04s6b99" targetRef="Event_06vptbc" />
+    <bpmn:sendTask id="Activity_0q17ntg" name="Fiscal registering" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${startFiscalRegistering}">
+      <bpmn:incoming>Flow_01xwm6m</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bupyyg</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sendTask id="ConfirmSberbankTask" name="Bank holding" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${startHold}">
+      <bpmn:incoming>Flow_1y3k76u</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tefw84</bpmn:outgoing>
+    </bpmn:sendTask>
   </bpmn:process>
+  <bpmn:message id="Message_1b01uwl" name="Message_2r9sv2e" />
+  <bpmn:message id="Message_0khpfgu" name="Message_28fu7hm" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1eg3xds">
-      <bpmndi:BPMNEdge id="Flow_1ecg5sf_di" bpmnElement="Flow_1ecg5sf">
-        <di:waypoint x="218" y="117" />
-        <di:waypoint x="265" y="117" />
+      <bpmndi:BPMNEdge id="Flow_0ot6ox0_di" bpmnElement="Flow_0ot6ox0">
+        <di:waypoint x="775" y="260" />
+        <di:waypoint x="872" y="260" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_01xwm6m_di" bpmnElement="Flow_01xwm6m">
-        <di:waypoint x="315" y="117" />
-        <di:waypoint x="370" y="117" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1y3k76u_di" bpmnElement="Flow_1y3k76u">
-        <di:waypoint x="290" y="142" />
-        <di:waypoint x="290" y="260" />
-        <di:waypoint x="370" y="260" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1bupyyg_di" bpmnElement="Flow_1bupyyg">
-        <di:waypoint x="470" y="117" />
-        <di:waypoint x="530" y="117" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1tefw84_di" bpmnElement="Flow_1tefw84">
-        <di:waypoint x="470" y="260" />
-        <di:waypoint x="530" y="260" />
+      <bpmndi:BPMNEdge id="Flow_1q7av16_di" bpmnElement="Flow_1q7av16">
+        <di:waypoint x="630" y="260" />
+        <di:waypoint x="725" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ver3rs_di" bpmnElement="Flow_0ver3rs">
         <di:waypoint x="630" y="117" />
         <di:waypoint x="750" y="117" />
         <di:waypoint x="750" y="235" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1q7av16_di" bpmnElement="Flow_1q7av16">
-        <di:waypoint x="630" y="260" />
-        <di:waypoint x="725" y="260" />
+      <bpmndi:BPMNEdge id="Flow_1tefw84_di" bpmnElement="Flow_1tefw84">
+        <di:waypoint x="470" y="260" />
+        <di:waypoint x="530" y="260" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ot6ox0_di" bpmnElement="Flow_0ot6ox0">
-        <di:waypoint x="775" y="260" />
-        <di:waypoint x="872" y="260" />
+      <bpmndi:BPMNEdge id="Flow_1bupyyg_di" bpmnElement="Flow_1bupyyg">
+        <di:waypoint x="470" y="117" />
+        <di:waypoint x="530" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Gateway_1mgis60_di" bpmnElement="Gateway_1txzcfr">
-        <dc:Bounds x="265" y="92" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1iuqtns_di" bpmnElement="Activity_0q17ntg">
-        <dc:Bounds x="370" y="77" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0wbuaeb_di" bpmnElement="Activity_1atekmv">
-        <dc:Bounds x="370" y="220" width="100" height="80" />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ecg5sf_di" bpmnElement="Flow_1ecg5sf">
+        <di:waypoint x="218" y="117" />
+        <di:waypoint x="265" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y3k76u_di" bpmnElement="Flow_1y3k76u">
+        <di:waypoint x="290" y="142" />
+        <di:waypoint x="290" y="260" />
+        <di:waypoint x="370" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01xwm6m_di" bpmnElement="Flow_01xwm6m">
+        <di:waypoint x="315" y="117" />
+        <di:waypoint x="370" y="117" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="182" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1mgis60_di" bpmnElement="Gateway_1txzcfr">
+        <dc:Bounds x="265" y="92" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_15281nj_di" bpmnElement="Gateway_04s6b99">
         <dc:Bounds x="725" y="235" width="50" height="50" />
@@ -101,6 +97,12 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_06vptbc_di" bpmnElement="Event_06vptbc">
         <dc:Bounds x="872" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0khx8uv_di" bpmnElement="Activity_0q17ntg">
+        <dc:Bounds x="370" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10av78t_di" bpmnElement="ConfirmSberbankTask">
+        <dc:Bounds x="370" y="220" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

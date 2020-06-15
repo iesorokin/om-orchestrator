@@ -4,24 +4,20 @@ brickName: @brick.name@
 spring:
   application:
     name: @project.name@
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.xml
   cloud:
     config:
       discovery:
-        enabled: true
+        enabled: false
         serviceId: config-server
       failFast: true
       label: develop
-  sleuth:
-    baggage-keys:
-      - solutionId
-      - processId
 
 eureka:
   client:
     service-url:
-      defaultZone: ${REPLICASET:http://localhost:10103/eureka/}
+      defaultZone: ${REPLICASET:http://localhost:8097/eureka/}
+
+
 
 logging:
   level:
@@ -30,3 +26,32 @@ logging:
     org.zalando.logbook.Logbook: TRACE
   pattern:
     console: "${brickName}_${spring.application.name} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%X{processId},%X{solutionId},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}]){blue}[%thread] %clr(%-5level) %clr(%logger{36}){magenta} - %msg%n"
+
+
+orchestrator:
+  consumer:
+    maxRetry: 10
+    maxRetryPerDay: 288
+internalSystem:
+  default:
+    readTimeout: 35000
+    connectTimeout: 5000
+    maxConnPerRoute: 50
+    maxConnTotal: 100
+
+externalSystem:
+  default:
+    readTimeout: 30000
+    connectTimeout: 10000
+    maxConnPerRoute: 50
+    maxConnTotal: 100
+
+sms:
+  urlSendMultiSms: urlSendMultiSms
+  sendSms: true
+
+taskExecutor:
+  corePoolSize: 5
+  maxPoolSize: 20
+server:
+  port: 8081

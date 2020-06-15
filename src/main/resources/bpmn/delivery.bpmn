@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0snesd9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.2">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0snesd9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.2">
   <bpmn:process id="Process_1axq9va" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1mp0ebo</bpmn:outgoing>
@@ -10,15 +10,16 @@
       <bpmn:incoming>Flow_1gmwi0q</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1gmwi0q" sourceRef="Activity_1cbi6bt" targetRef="Event_0ddq377" />
-    <bpmn:sendTask id="Activity_011atgi" name="Delivery">
+    <bpmn:sendTask id="Activity_011atgi" name="Delivery" camunda:asyncBefore="true" camunda:exclusive="false" camunda:delegateExpression="${startDelivery}">
       <bpmn:incoming>Flow_1mp0ebo</bpmn:incoming>
       <bpmn:outgoing>Flow_1kw4uv2</bpmn:outgoing>
     </bpmn:sendTask>
-    <bpmn:receiveTask id="Activity_1cbi6bt" name="Receive status">
+    <bpmn:receiveTask id="Activity_1cbi6bt" name="Receive status" camunda:asyncBefore="true" camunda:exclusive="false" messageRef="Message_0ldej4t">
       <bpmn:incoming>Flow_1kw4uv2</bpmn:incoming>
       <bpmn:outgoing>Flow_1gmwi0q</bpmn:outgoing>
     </bpmn:receiveTask>
   </bpmn:process>
+  <bpmn:message id="Message_0ldej4t" name="Message_2637o3a" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1axq9va">
       <bpmndi:BPMNEdge id="Flow_1gmwi0q_di" bpmnElement="Flow_1gmwi0q">
